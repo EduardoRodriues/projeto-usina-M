@@ -1,0 +1,28 @@
+@use "./app.variaveis" as *;
+
+
+.total-container {
+  display: flex;
+  width: 100dvw;
+  height: 100dvh;
+  background: #eee;
+}
+
+
+.side-bar-left {
+  width: 17%;
+  background-color: $back-ground-side-tool-bar;
+  border-radius: 0;
+}
+
+.main-content {
+  width: 100%;
+}
+
+.toolbar-main-content {
+  width: 100%;
+  align-items: center;
+  justify-content: center;
+  color: $text-main-color;
+  background-color: $back-ground-side-tool-bar;
+}
