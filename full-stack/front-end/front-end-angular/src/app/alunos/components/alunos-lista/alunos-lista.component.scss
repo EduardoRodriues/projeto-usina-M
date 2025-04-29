@@ -1,0 +1,12 @@
+@use "../../../app.variaveis.scss" as *;
+
+.example-button-row {
+  display: flex;
+  justify-content: flex-end;
+  padding: 0.8rem;
+}
+
+.btn-success {
+  background-color: $buttons-add-success-color !important;
+}
+
