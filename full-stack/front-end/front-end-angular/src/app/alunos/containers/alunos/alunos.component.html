@@ -1,19 +1,21 @@
-<ng-container *ngIf="alunos | async">
-  <table mat-table [dataSource]="alunos" class="mat-elevation-z8">
+<section>
+  <div class="container-header-main-content">
+    <div class="example-button-row">
+      <button
+        mat-flat-button
+        class="btn-success"
+        aria-label="Adicionar Aluno"
+        (click)="addAluno()"
+      >
+        Adicionar
+      </button>
+    </div>
+  </div>
+  <div></div>
+</section>
 
-    <ng-container matColumnDef="nome">
-      <th mat-header-cell *matHeaderCellDef>Nome</th>
-      <td mat-cell *matCellDef="let aluno">{{ aluno.nome }}</td>
-    </ng-container>
-
-    <ng-container matColumnDef="email">
-      <th mat-header-cell *matHeaderCellDef>Email</th>
-      <td mat-cell *matCellDef="let aluno">{{ aluno.email }}</td>
-    </ng-container>
-
-    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
-    <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
-  </table>
-</ng-container>
-
+<app-alunos-lista
+  *ngIf="alunos | async as alunos"
+  [alunos]="alunos"
+></app-alunos-lista>
 <router-outlet />

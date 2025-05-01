@@ -4,26 +4,35 @@ import { RouterOutlet } from '@angular/router';
 import { MatCardModule } from '@angular/material/card';
 import { Alunos } from './models/alunos';
 import { AlunosService } from '../../services/alunos.service';
-import { Observable, of } from 'rxjs';
+import { Observable } from 'rxjs';
 import { CommonModule } from '@angular/common';
 import { MatTableModule } from '@angular/material/table';
+import { MatButtonModule } from '@angular/material/button';
+import { MatIconModule } from '@angular/material/icon';
 
 @Component({
   selector: 'app-alunos',
-  imports: [RouterOutlet, MatCardModule, CommonModule, MatTableModule],
+  imports: [
+    RouterOutlet,
+    MatCardModule,
+    MatButtonModule,
+    MatIconModule,
+    CommonModule,
+    MatTableModule,
+    AlunosListaComponent,
+  ],
   templateUrl: './alunos.component.html',
   styleUrl: './alunos.component.scss',
-  standalone: true
+  standalone: true,
 })
 export class AlunosComponent {
   alunos: Observable<Alunos[]>;
-
-  displayedColumns: string[] = ['nome', 'email'];
 
   constructor(private alunosService: AlunosService) {
     this.alunos = this.alunosService.listarTodos();
   }
 
-  ngOnInit() {
-  }
+  ngOnInit() {}
+
+  addAluno() {}
 }
