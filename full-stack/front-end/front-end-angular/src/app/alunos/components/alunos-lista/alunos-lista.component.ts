@@ -1,5 +1,5 @@
 import { Alunos } from '../../containers/alunos/models/alunos';
-import { Component, Output } from '@angular/core';
+import { Component, Input } from '@angular/core';
 import { MatTableModule } from '@angular/material/table';
 import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
@@ -11,15 +11,6 @@ import { MatIconModule } from '@angular/material/icon';
   styleUrl: './alunos-lista.component.scss',
 })
 export class AlunosListaComponent {
-  @Output() alunos: Alunos[] = [];
+  
 
-  displayedColumns: string[] = ['nome', 'email', 'actions'];
-
-  constructor() {}
-
-  addAluno() {}
-
-  updateAndDelete() {
-
-  }
 }
