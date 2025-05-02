@@ -1,5 +1,5 @@
 import { Alunos } from '../../containers/alunos/models/alunos';
-import { Component, Input } from '@angular/core';
+import { Component, Input, Output, EventEmitter } from '@angular/core';
 import { MatTableModule } from '@angular/material/table';
 import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
@@ -16,11 +16,17 @@ export class AlunosListaComponent {
 
   displayedColumns: string[] = ['nome', 'email', 'actions'];
 
+  @Output() add = new EventEmitter(false);
+  @Output() edit = new EventEmitter(false);
+  @Output() delete = new EventEmitter(false);
+
   constructor() {}
 
-  addAluno() {}
+  addAluno() {
+    this.add.emit(true);
+  }
 
-  updateAndDelete(aluno: Alunos) {
-    console.log('Editar ou excluir:', aluno);
+  updateOrDelete() {
+
   }
 }

@@ -1,9 +1,8 @@
-package br.com.carlosrodrigues.web;
+package br.com.carlosrodrigues.web.mappers;
 
 import br.com.carlosrodrigues.core.models.Alunos;
 import br.com.carlosrodrigues.web.dtos.AlunosDTO;
 import org.mapstruct.Mapper;
-import org.mapstruct.Mapping;
 
 @Mapper(componentModel = "spring")
 public interface IAlunosMapper {

@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { AlunosListaComponent } from '../../components/alunos-lista/alunos-lista.component';
-import { RouterOutlet } from '@angular/router';
+import { ActivatedRoute, RouterOutlet, Router } from '@angular/router';
 import { MatCardModule } from '@angular/material/card';
 import { Alunos } from './models/alunos';
 import { AlunosService } from '../../services/alunos.service';
@@ -28,11 +28,13 @@ import { MatIconModule } from '@angular/material/icon';
 export class AlunosComponent {
   alunos: Observable<Alunos[]>;
 
-  constructor(private alunosService: AlunosService) {
+  constructor(private alunosService: AlunosService, private route: ActivatedRoute, private router: Router) {
     this.alunos = this.alunosService.listarTodos();
   }
 
   ngOnInit() {}
 
-  addAluno() {}
+  addAluno() {
+    this.router.navigate(['/alunos/novo']);
+  }
 }

@@ -7,7 +7,7 @@ import { AlunosComponent } from "./alunos/containers/alunos/alunos.component";
 
 @Component({
   selector: 'app-root',
-  imports: [RouterOutlet, MatSidenavModule, MatToolbarModule, AlunosComponent],
+  imports: [RouterOutlet, MatSidenavModule, MatToolbarModule],
   templateUrl: './app.component.html',
   styleUrl: './app.component.scss',
 })
