@@ -15,6 +15,7 @@ import { MatSnackBar, MatSnackBarModule } from '@angular/material/snack-bar';
 import { Location } from '@angular/common';
 import { Alunos } from '../../containers/alunos/models/alunos';
 import { AlunosService } from '../../services/alunos.service';
+import { FormUtilsService } from '../../form/form-utils.service';
 
 @Component({
   selector: 'app-alunos-form',
@@ -40,7 +41,8 @@ export class AlunosFormComponent {
     private location: Location,
     private formBuilder: FormBuilder,
     private service: AlunosService,
-    private sanackbar: MatSnackBar
+    private sanackbar: MatSnackBar,
+    public formUtils: FormUtilsService
   ) {}
 
   ngOnInit(): void {
@@ -65,6 +67,8 @@ export class AlunosFormComponent {
         () => this.onSuccess(),
         () => this.onError()
       );
+    } else {
+      this.formUtils.validateAllFormFields(this.form);
     }
   }
 

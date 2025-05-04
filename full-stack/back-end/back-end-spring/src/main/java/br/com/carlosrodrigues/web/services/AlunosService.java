@@ -3,14 +3,21 @@ package br.com.carlosrodrigues.web.services;
 import br.com.carlosrodrigues.core.exceptions.RecordNotFoundException;
 import br.com.carlosrodrigues.core.models.Alunos;
 import br.com.carlosrodrigues.core.repositories.IAlunosRepository;
+import br.com.carlosrodrigues.web.dtos.AlunosPageDTO;
 import br.com.carlosrodrigues.web.mappers.IAlunosMapper;
 import br.com.carlosrodrigues.web.dtos.AlunosDTO;
+import jakarta.validation.Valid;
+import jakarta.validation.constraints.Max;
 import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Positive;
+import jakarta.validation.constraints.PositiveOrZero;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.stream.Collectors;
 
 @Service
 public class AlunosService {
@@ -21,8 +28,10 @@ public class AlunosService {
     @Autowired
     private IAlunosMapper alunosMapper;
 
-    public List<Alunos> listarTodos() {
-        return alunosRepository.findAll();
+    public AlunosPageDTO listarTodos(@PositiveOrZero int page, @Positive @Max(100) int tamanho) {
+        Page<Alunos> pageCurso = alunosRepository.findAll(PageRequest.of(page, tamanho));
+        List<AlunosDTO> cursos = pageCurso.get().map(alunosMapper::toDTO).collect(Collectors.toList());
+        return new AlunosPageDTO(cursos, pageCurso.getTotalElements(), pageCurso.getTotalPages());
     }
 
     public Alunos cadastrar(AlunosDTO alunosDTO) {
@@ -33,6 +42,22 @@ public class AlunosService {
     public AlunosDTO buscarPorId(@NotNull @Positive Long id) {
         return alunosRepository.findById(id).map(alunosMapper::toDTO).
                 orElseThrow(() -> new RecordNotFoundException(id));
+    }
+
+    public AlunosDTO editar(@NotNull @Valid AlunosDTO alunosDTO, @Positive @NotNull Long id) {
+        return alunosRepository.findById(id).
+                map(record -> {
+                    Alunos alunos = alunosMapper.toModel(alunosDTO);
+                    record.setNome(alunos.getNome());
+                    record.setEmail(alunos.getEmail());
+                    return alunosMapper.toDTO(alunosRepository.save(record));
+                })
+                .orElseThrow(() -> new RecordNotFoundException(id));
+    }
+
+    public void excluir(@NotNull @Positive Long id) {
+        alunosRepository.delete(alunosRepository.findById(id)
+                .orElseThrow(() -> new RecordNotFoundException(id)));
     }
 
 

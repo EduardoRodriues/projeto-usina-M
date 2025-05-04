@@ -2,6 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Alunos } from '../containers/alunos/models/alunos';
 import { first, tap } from 'rxjs';
+import { AlunosPage } from '../containers/alunos/models/alunos-page';
 
 @Injectable({
   providedIn: 'root',
@@ -11,8 +12,13 @@ export class AlunosService {
 
   constructor(private http: HttpClient) {}
 
-  listarTodos() {
-    return this.http.get<Alunos[]>(this.API).pipe(first());
+  listarTodos(page = 10, tamanho = 10) {
+    return this.http
+      .get<AlunosPage>(this.API, { params: { page, tamanho } })
+      .pipe(
+        first(),
+        tap((cursos) => console.log(cursos))
+      );
   }
 
   save(record: Partial<Alunos>) {
@@ -25,6 +31,10 @@ export class AlunosService {
 
   buscarId(id: string) {
     return this.http.get<Alunos>(`${this.API}/${id}`);
+  }
+
+  remove(id: string) {
+    return this.http.delete<Alunos>(`${this.API}/${id}`);
   }
 
   private create(record: Partial<Alunos>) {

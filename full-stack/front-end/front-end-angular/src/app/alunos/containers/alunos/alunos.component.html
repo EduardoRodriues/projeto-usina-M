@@ -1,6 +1,13 @@
 <section>
   <div class="container-header-main-content">
-    <div class="example-button-row">
+    <div class="acoes-tool-bar">
+      <form class="example-form">
+        <mat-form-field class="example-full-width">
+          <mat-label>nome do aluno</mat-label>
+          <input type="tel" matInput placeholder="555-555-1234" />
+          <mat-icon matSuffix>search</mat-icon>
+        </mat-form-field>
+      </form>
       <button
         mat-flat-button
         class="btn-success"
@@ -11,11 +18,25 @@
       </button>
     </div>
   </div>
-  <div></div>
 </section>
+<section>
+  <div class="mat-elevation-z8" *ngIf="alunos | async as alunos">
+    <app-alunos-lista
+      [alunos]="alunos.alunos"
+      (edit)="editAluno($event)"
+      (delete)="deleteAluno($event)"
+    ></app-alunos-lista>
 
-<app-alunos-lista
-  *ngIf="alunos | async as alunos"
-  [alunos]="alunos"
-></app-alunos-lista>
+    <mat-paginator
+      showFirstLastButtons
+      [length]="alunos.totalElements"
+      [pageSize]="pageSize"
+      [pageIndex]="pageIndex"
+      [pageSizeOptions]="[5, 10, 15, 20]"
+      (page)="refresh($event)"
+      aria-label="Select page"
+    >
+    </mat-paginator>
+  </div>
+</section>
 <router-outlet />

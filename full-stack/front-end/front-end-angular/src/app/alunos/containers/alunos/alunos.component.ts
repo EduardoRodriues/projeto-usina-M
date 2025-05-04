@@ -1,40 +1,118 @@
-import { Component } from '@angular/core';
 import { AlunosListaComponent } from '../../components/alunos-lista/alunos-lista.component';
-import { ActivatedRoute, RouterOutlet, Router } from '@angular/router';
-import { MatCardModule } from '@angular/material/card';
-import { Alunos } from './models/alunos';
-import { AlunosService } from '../../services/alunos.service';
-import { Observable } from 'rxjs';
-import { CommonModule } from '@angular/common';
+import { Component, ViewChild } from '@angular/core';
+import { RouterOutlet, Router, ActivatedRoute } from '@angular/router';
 import { MatTableModule } from '@angular/material/table';
-import { MatButtonModule } from '@angular/material/button';
+import { Alunos } from './models/alunos';
+import { MatCardModule } from '@angular/material/card';
+import { MatToolbarModule } from '@angular/material/toolbar';
+import { AlunosService } from '../../services/alunos.service';
+import { catchError, Observable, of, tap } from 'rxjs';
+import { CommonModule } from '@angular/common';
+import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
+import { MatDialog, MatDialogModule } from '@angular/material/dialog';
+import { ErrorDialogComponent } from '../../error/error-dialog/error-dialog.component';
 import { MatIconModule } from '@angular/material/icon';
+import { MatSnackBar } from '@angular/material/snack-bar';
+import { ConfirmationDialogComponent } from '../../components/confirmation-dialog/confirmation-dialog.component';
+import { AlunosPage } from './models/alunos-page';
+import {
+  MatPaginator,
+  MatPaginatorModule,
+  PageEvent,
+} from '@angular/material/paginator';
+import { MatButtonModule } from '@angular/material/button';
+import { FormsModule } from '@angular/forms';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatInputModule } from '@angular/material/input';
 
 @Component({
   selector: 'app-alunos',
   imports: [
     RouterOutlet,
-    MatCardModule,
-    MatButtonModule,
-    MatIconModule,
-    CommonModule,
     MatTableModule,
+    MatCardModule,
+    MatToolbarModule,
+    CommonModule,
+    MatProgressSpinnerModule,
+    MatDialogModule,
+    MatIconModule,
     AlunosListaComponent,
+    MatPaginatorModule,
+    MatButtonModule,
+    FormsModule,
+    MatFormFieldModule,
+    MatInputModule,
   ],
   templateUrl: './alunos.component.html',
   styleUrl: './alunos.component.scss',
   standalone: true,
 })
 export class AlunosComponent {
-  alunos: Observable<Alunos[]>;
+  alunos: Observable<AlunosPage> | null = null;
 
-  constructor(private alunosService: AlunosService, private route: ActivatedRoute, private router: Router) {
-    this.alunos = this.alunosService.listarTodos();
+  @ViewChild(MatPaginator) paginator!: MatPaginator;
+
+  pageIndex = 0;
+  pageSize = 10;
+
+  constructor(
+    private alunosService: AlunosService,
+    private route: ActivatedRoute,
+    private snackBar: MatSnackBar,
+    private router: Router,
+    public dialog: MatDialog
+  ) {
+    this.refresh();
   }
 
-  ngOnInit() {}
+  refresh(pageEvent: PageEvent = { length: 0, pageIndex: 0, pageSize: 10 }) {
+    this.alunos = this.alunosService
+      .listarTodos(pageEvent.pageIndex, pageEvent.pageSize)
+      .pipe(
+        tap(() => {
+          this.pageIndex = pageEvent.pageIndex;
+          this.pageSize = pageEvent.pageSize;
+        }),
+        catchError((error) => {
+          this.onError('Erro ao carregar cursos');
+          return of({ alunos: [], totalElements: 0, totalPages: 0 });
+        })
+      );
+  }
+
+  onError(errorMsg: string) {
+    this.dialog.open(ErrorDialogComponent, {
+      data: errorMsg,
+    });
+  }
 
   addAluno() {
     this.router.navigate(['/alunos/novo']);
+  }
+
+  editAluno(aluno: Alunos) {
+    this.router.navigate(['/alunos/editar', aluno._id]);
+  }
+
+  deleteAluno(aluno: Alunos) {
+    const dialogRef = this.dialog.open(ConfirmationDialogComponent, {
+      data: 'Tem certeza que deseja remover esse curso?',
+    });
+
+    dialogRef.afterClosed().subscribe((result) => {
+      if (result) {
+        this.alunosService.remove(aluno._id).subscribe(
+          () => {
+            this.refresh();
+            this.snackBar.open('Curso removido com sucesso!', 'x', {
+              duration: 3000,
+              verticalPosition: 'top',
+              horizontalPosition: 'center',
+            });
+          },
+          () => this.onError('Erro ao remover curso!')
+        );
+      }
+    });
   }
 }

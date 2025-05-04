@@ -5,38 +5,22 @@
 
   <mat-card-content>
     <form [formGroup]="form" class="full-widht min-widht">
-      <mat-form-field class="full-widht">
-        <input matInput placeholder="Nome" formControlName="nome" #nome />
+      <mat-form-field class="full-widht" class="inputs-formulario">
+        <input  matInput placeholder="Nome" formControlName="nome" #nome />
         <mat-hint align="end">{{ nome.value.length || 0 }} / 100</mat-hint>
-        <!--
+
         @if (form.get('nome')?.invalid) {
-          <mat-error>{{ formUtils.geterrorMessage(form, "nome") }}</mat-error>
-      } -->
+        <mat-error>{{ formUtils.geterrorMessage(form, "nome") }}</mat-error>
+        }
       </mat-form-field>
 
       <mat-form-field class="full-widht">
         <input matInput placeholder="email" formControlName="email" #nome />
-        <!--
+
         @if (form.get('nome')?.invalid) {
-          <mat-error>{{ formUtils.geterrorMessage(form, "nome") }}</mat-error>
-      } -->
-      </mat-form-field>
-      <!--
-      <mat-form-field class="full-widht">
-        <mat-label>Email</mat-label>
-        <mat-select formControlName="email">
-          <mat-option value="front-end">Front-End</mat-option>
-          <mat-option value="back-end">Back-End</mat-option>
-        </mat-select>
-
-        @if (form.get('categoria')?.invalid) {
-          <mat-error>{{
-            formUtils.geterrorMessage(form, "categoria")
-          }}</mat-error>
+        <mat-error>{{ formUtils.geterrorMessage(form, "nome") }}</mat-error>
         }
-
       </mat-form-field>
-      -->
     </form>
   </mat-card-content>
 

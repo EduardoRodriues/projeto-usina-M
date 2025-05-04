@@ -19,4 +19,14 @@ export const alunos_routes: Routes = [
       aluno: alunosResolver,
     },
   },
+  {
+    path: 'editar/:id',
+    loadComponent: () =>
+      import('./components/alunos-form/alunos-form.component').then(
+        (m) => m.AlunosFormComponent
+      ),
+    resolve: {
+      aluno: alunosResolver,
+    },
+  },
 ];
