@@ -29,9 +29,9 @@ public class AlunosService {
     private IAlunosMapper alunosMapper;
 
     public AlunosPageDTO listarTodos(@PositiveOrZero int page, @Positive @Max(100) int tamanho) {
-        Page<Alunos> pageCurso = alunosRepository.findAll(PageRequest.of(page, tamanho));
-        List<AlunosDTO> cursos = pageCurso.get().map(alunosMapper::toDTO).collect(Collectors.toList());
-        return new AlunosPageDTO(cursos, pageCurso.getTotalElements(), pageCurso.getTotalPages());
+        Page<Alunos> pageAlunos = alunosRepository.findAll(PageRequest.of(page, tamanho));
+        List<AlunosDTO> alunos = pageAlunos.get().map(alunosMapper::toDTO).collect(Collectors.toList());
+        return new AlunosPageDTO(alunos, pageAlunos.getTotalElements(), pageAlunos.getTotalPages());
     }
 
     public Alunos cadastrar(AlunosDTO alunosDTO) {

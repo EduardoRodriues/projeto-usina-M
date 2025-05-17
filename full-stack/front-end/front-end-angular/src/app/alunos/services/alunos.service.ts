@@ -17,7 +17,7 @@ export class AlunosService {
       .get<AlunosPage>(this.API, { params: { page, tamanho } })
       .pipe(
         first(),
-        tap((cursos) => console.log(cursos))
+        tap((alunos) => console.log(alunos))
       );
   }
 

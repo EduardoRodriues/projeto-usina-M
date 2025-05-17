@@ -8,28 +8,19 @@
           <mat-icon matSuffix>search</mat-icon>
         </mat-form-field>
       </form>
-      <button
-        mat-flat-button
-        class="btn-success"
-        aria-label="Adicionar Aluno"
-        (click)="addAluno()"
-      >
-        Adicionar
-      </button>
     </div>
   </div>
 </section>
+
 <section>
-  <div class="mat-elevation-z8" *ngIf="alunos | async as alunos">
-    <app-alunos-lista
-      [alunos]="alunos.alunos"
-      (edit)="editAluno($event)"
-      (delete)="deleteAluno($event)"
-    ></app-alunos-lista>
+  <div class="mat-elevation-z8" *ngIf="frequencias | async as frequencias">
+    <app-lista-frequencia
+      [frequencias]="frequencias.alunos"
+    ></app-lista-frequencia>
 
     <mat-paginator
       showFirstLastButtons
-      [length]="alunos.totalElements"
+      [length]="frequencias.totalElements"
       [pageSize]="pageSize"
       [pageIndex]="pageIndex"
       [pageSizeOptions]="[5, 10, 15, 20]"
@@ -39,4 +30,5 @@
     </mat-paginator>
   </div>
 </section>
+
 <router-outlet />

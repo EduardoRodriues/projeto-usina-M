@@ -74,7 +74,7 @@ export class AlunosComponent {
           this.pageSize = pageEvent.pageSize;
         }),
         catchError((error) => {
-          this.onError('Erro ao carregar cursos');
+          this.onError('Erro ao carregar alunos');
           return of({ alunos: [], totalElements: 0, totalPages: 0 });
         })
       );
