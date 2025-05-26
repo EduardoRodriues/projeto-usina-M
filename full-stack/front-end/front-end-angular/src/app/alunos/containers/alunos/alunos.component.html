@@ -4,7 +4,8 @@
       <form class="example-form">
         <mat-form-field class="example-full-width">
           <mat-label>nome do aluno</mat-label>
-          <input type="tel" matInput placeholder="aluno(a)" />
+          <input type="tel" matInput placeholder="aluno(a)"
+          [formControl]="nomeFilter" />
           <mat-icon matSuffix>search</mat-icon>
         </mat-form-field>
       </form>

@@ -1,4 +1,4 @@
-package br.com.carlosrodrigues.core.models.usuario.alunos;
+package br.com.carlosrodrigues.core.models.empresa.alunos;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 import jakarta.persistence.*;

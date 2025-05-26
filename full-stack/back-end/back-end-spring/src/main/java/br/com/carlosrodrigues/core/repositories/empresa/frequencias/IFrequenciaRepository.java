@@ -1,4 +1,4 @@
-package br.com.carlosrodrigues.core.repositories.usuario.frequencias;
+package br.com.carlosrodrigues.core.repositories.empresa.frequencias;
 
 import br.com.carlosrodrigues.core.models.empresa.alunos.Alunos;
 import br.com.carlosrodrigues.core.models.empresa.frequencias.Frequencia;

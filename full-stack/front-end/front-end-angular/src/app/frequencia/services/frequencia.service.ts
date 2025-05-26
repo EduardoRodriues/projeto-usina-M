@@ -12,10 +12,14 @@ export class FrequenciaService {
 
   constructor(private http: HttpClient) {}
 
-   listarTodos(page = 0, tamanho = 10) {
-    const params = new HttpParams()
+  listarTodos(page = 0, tamanho = 10, nomeFiltro = '') {
+    let params = new HttpParams()
       .set('page', page.toString())
       .set('tamanho', tamanho.toString());
+
+    if (nomeFiltro.trim()) {
+      params = params.set('nome', nomeFiltro.trim());
+    }
 
     return this.http
       .get<FrequenciasPage>(this.API, { params })

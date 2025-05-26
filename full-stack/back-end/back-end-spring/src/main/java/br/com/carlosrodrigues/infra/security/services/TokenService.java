@@ -1,4 +1,4 @@
-package br.com.carlosrodrigues.infra.security;
+package br.com.carlosrodrigues.infra.security.services;
 
 import br.com.carlosrodrigues.core.models.usuario.Usuario;
 import com.auth0.jwt.JWT;

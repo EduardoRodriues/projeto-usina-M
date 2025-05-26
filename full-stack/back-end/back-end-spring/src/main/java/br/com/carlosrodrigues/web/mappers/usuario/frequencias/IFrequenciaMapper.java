@@ -1,4 +1,4 @@
-package br.com.carlosrodrigues.web.mappers;
+package br.com.carlosrodrigues.web.mappers.usuario.frequencias;
 
 import org.mapstruct.Mapper;
 

@@ -1,4 +1,4 @@
-package br.com.carlosrodrigues.core.repositories.usuario.alunos;
+package br.com.carlosrodrigues.core.repositories.empresa.alunos;
 
 import br.com.carlosrodrigues.core.models.empresa.alunos.Alunos;
 import org.springframework.data.domain.Page;

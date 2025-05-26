@@ -1,4 +1,4 @@
 package br.com.carlosrodrigues.auth.dtos;
 
-public class RegisterRequestDTO {
+public record RegisterRequestDTO (String nome, String email, String senha) {
 }

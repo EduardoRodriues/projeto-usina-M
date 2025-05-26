@@ -12,14 +12,21 @@ export class AlunosService {
 
   constructor(private http: HttpClient) {}
 
-  listarTodos(page = 10, tamanho = 10) {
-    return this.http
-      .get<AlunosPage>(this.API, { params: { page, tamanho } })
-      .pipe(
-        first(),
-        tap((alunos) => console.log(alunos))
-      );
-  }
+  listarTodos(page = 0, tamanho = 10, nome = '') {
+  return this.http
+    .get<AlunosPage>(this.API, {
+      params: {
+        page: page.toString(),
+        tamanho: tamanho.toString(),
+        nome
+      }
+    })
+    .pipe(
+      first(),
+      tap((alunos) => console.log(alunos))
+    );
+}
+
 
   save(record: Partial<Alunos>) {
     if (record._id) {

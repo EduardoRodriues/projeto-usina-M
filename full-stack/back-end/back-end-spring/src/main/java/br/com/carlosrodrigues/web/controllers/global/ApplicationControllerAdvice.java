@@ -1,4 +1,4 @@
-package br.com.carlosrodrigues.web.controllers;
+package br.com.carlosrodrigues.web.controllers.global;
 
 import br.com.carlosrodrigues.core.exceptions.RecordNotFoundException;
 import jakarta.validation.ConstraintViolationException;

@@ -1,12 +1,12 @@
 import { AlunosListaComponent } from '../../components/alunos-lista/alunos-lista.component';
 import { Component, ViewChild } from '@angular/core';
-import { RouterOutlet, Router, ActivatedRoute } from '@angular/router';
+import { RouterOutlet, Router } from '@angular/router';
 import { MatTableModule } from '@angular/material/table';
 import { Alunos } from './models/alunos';
 import { MatCardModule } from '@angular/material/card';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { AlunosService } from '../../services/alunos.service';
-import { catchError, Observable, of, tap } from 'rxjs';
+import { catchError, debounceTime, distinctUntilChanged, Observable, of, tap } from 'rxjs';
 import { CommonModule } from '@angular/common';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { MatDialog, MatDialogModule } from '@angular/material/dialog';
@@ -21,9 +21,10 @@ import {
   PageEvent,
 } from '@angular/material/paginator';
 import { MatButtonModule } from '@angular/material/button';
-import { FormsModule } from '@angular/forms';
+import { FormControl, FormsModule } from '@angular/forms';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
+import { ReactiveFormsModule } from '@angular/forms';
 
 @Component({
   selector: 'app-alunos',
@@ -42,6 +43,7 @@ import { MatInputModule } from '@angular/material/input';
     FormsModule,
     MatFormFieldModule,
     MatInputModule,
+    ReactiveFormsModule
   ],
   templateUrl: './alunos.component.html',
   styleUrl: './alunos.component.scss',
@@ -55,25 +57,35 @@ export class AlunosComponent {
   pageIndex = 0;
   pageSize = 10;
 
+  nomeFilter = new FormControl('');
+
   constructor(
     private alunosService: AlunosService,
-    private route: ActivatedRoute,
     private snackBar: MatSnackBar,
     private router: Router,
     public dialog: MatDialog
   ) {
+    this.nomeFilter.valueChanges.pipe(
+      debounceTime(300),
+      distinctUntilChanged()
+    ).subscribe(() => {
+      this.pageIndex = 0;
+      this.refresh();
+    });
+
     this.refresh();
   }
 
-  refresh(pageEvent: PageEvent = { length: 0, pageIndex: 0, pageSize: 10 }) {
+  refresh(pageEvent: PageEvent = { length: 0, pageIndex: this.pageIndex, pageSize: this.pageSize }) {
+    const filtroNome = this.nomeFilter.value || '';
     this.alunos = this.alunosService
-      .listarTodos(pageEvent.pageIndex, pageEvent.pageSize)
+      .listarTodos(pageEvent.pageIndex, pageEvent.pageSize, filtroNome)
       .pipe(
         tap(() => {
           this.pageIndex = pageEvent.pageIndex;
           this.pageSize = pageEvent.pageSize;
         }),
-        catchError((error) => {
+        catchError(() => {
           this.onError('Erro ao carregar alunos');
           return of({ alunos: [], totalElements: 0, totalPages: 0 });
         })

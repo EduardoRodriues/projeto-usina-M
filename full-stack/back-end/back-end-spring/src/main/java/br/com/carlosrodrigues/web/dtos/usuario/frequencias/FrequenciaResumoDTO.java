@@ -1,6 +1,6 @@
-package br.com.carlosrodrigues.web.dtos;
+package br.com.carlosrodrigues.web.dtos.usuario.frequencias;
 
-import br.com.carlosrodrigues.core.models.Alunos;
+import br.com.carlosrodrigues.core.models.empresa.alunos.Alunos;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 public record FrequenciaResumoDTO(

@@ -1,10 +1,10 @@
-package br.com.carlosrodrigues.web.services;
+package br.com.carlosrodrigues.web.services.usuario.frequencias;
 
-import br.com.carlosrodrigues.core.models.Alunos;
-import br.com.carlosrodrigues.core.repositories.IAlunosRepository;
-import br.com.carlosrodrigues.core.repositories.IFrequenciaRepository;
-import br.com.carlosrodrigues.web.dtos.FrequenciaResumoDTO;
-import br.com.carlosrodrigues.web.dtos.FrequenciaResumoPageDTO;
+import br.com.carlosrodrigues.core.models.empresa.alunos.Alunos;
+import br.com.carlosrodrigues.core.repositories.empresa.alunos.IAlunosRepository;
+import br.com.carlosrodrigues.core.repositories.empresa.frequencias.IFrequenciaRepository;
+import br.com.carlosrodrigues.web.dtos.usuario.frequencias.FrequenciaResumoDTO;
+import br.com.carlosrodrigues.web.dtos.usuario.frequencias.FrequenciaResumoPageDTO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;

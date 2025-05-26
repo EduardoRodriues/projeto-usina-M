@@ -1,7 +1,7 @@
-package br.com.carlosrodrigues.web.controllers;
+package br.com.carlosrodrigues.web.controllers.usuario.frequencias;
 
-import br.com.carlosrodrigues.web.dtos.FrequenciaResumoPageDTO;
-import br.com.carlosrodrigues.web.services.FrequenciaService;
+import br.com.carlosrodrigues.web.dtos.usuario.frequencias.FrequenciaResumoPageDTO;
+import br.com.carlosrodrigues.web.services.usuario.frequencias.FrequenciaService;
 import jakarta.validation.constraints.Max;
 import jakarta.validation.constraints.Positive;
 import jakarta.validation.constraints.PositiveOrZero;
