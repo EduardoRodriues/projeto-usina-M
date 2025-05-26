@@ -30,8 +30,4 @@ export const alunos_routes: Routes = [
       aluno: alunosResolver,
     },
   },
-  {
-    path: 'frequencias',
-    children: frequencia_routes,
-  }
 ];

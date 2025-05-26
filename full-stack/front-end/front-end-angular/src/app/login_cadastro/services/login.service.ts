@@ -12,20 +12,20 @@ export class LoginService {
 
   constructor(private httpClient: HttpClient) { }
 
-  login(email: string, password: string){
-    return this.httpClient.post<LoginResponse>(this.apiUrl + "/login", { email, password }).pipe(
+  login(email: string, senha: string){
+    return this.httpClient.post<LoginResponse>(this.apiUrl + "/login", { email, senha }).pipe(
       tap((value) => {
         sessionStorage.setItem("auth-token", value.token)
-        sessionStorage.setItem("username", value.name)
+        sessionStorage.setItem("username", value.nome)
       })
     )
   }
 
-  signup(name: string, email: string, password: string){
-    return this.httpClient.post<LoginResponse>(this.apiUrl + "/register", { name, email, password }).pipe(
+  signup(nome: string, email: string, senha: string){
+    return this.httpClient.post<LoginResponse>(this.apiUrl + "/register", { nome, email, senha }).pipe(
       tap((value) => {
         sessionStorage.setItem("auth-token", value.token)
-        sessionStorage.setItem("username", value.name)
+        sessionStorage.setItem("username", value.nome)
       })
     )
   }

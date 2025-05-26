@@ -35,16 +35,23 @@ export class LoginComponent {
   }
 
   submit() {
+    if (this.loginForm.invalid) {
+      window.alert('Preencha corretamente os campos!');
+      return;
+    }
+
     this.loginService
       .login(this.loginForm.value.email, this.loginForm.value.password)
       .subscribe({
-        next: () => window.alert('Cadastro feito com sucesso!'),
+        next: () => {
+          this.router.navigate(['alunos']);
+        },
         error: () =>
           window.alert('Erro inesperado! Tente novamente mais tarde'),
       });
   }
 
   navigate() {
-    this.router.navigate(['signup']);
+    this.router.navigate(['login', 'cadastrar']);
   }
 }

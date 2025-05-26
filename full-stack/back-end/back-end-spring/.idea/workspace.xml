@@ -5,55 +5,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="5fce086a-1776-466b-ba8f-251c1e645d2b" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/main/java/br/com/carlosrodrigues/auth/controllers/AuthController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/br/com/carlosrodrigues/auth/dtos/LoginRequestDTO.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/br/com/carlosrodrigues/auth/dtos/RegisterRequestDTO.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/br/com/carlosrodrigues/auth/dtos/ResponseDTO.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/br/com/carlosrodrigues/core/models/usuario/Usuario.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/br/com/carlosrodrigues/core/repositories/empresa/alunos/IAlunosRepository.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/br/com/carlosrodrigues/core/repositories/usuario/IUsuarioRepository.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/br/com/carlosrodrigues/infra/cors/CorsConfig.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/br/com/carlosrodrigues/infra/security/SecurityFilter.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/br/com/carlosrodrigues/infra/security/config/SecurityConfig.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/br/com/carlosrodrigues/infra/security/services/CustomUserDetailsService.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/br/com/carlosrodrigues/infra/security/services/TokenService.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/br/com/carlosrodrigues/web/dtos/usuario/frequencias/FrequenciaResumoDTO.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/br/com/carlosrodrigues/web/mappers/usuario/frequencias/IFrequenciaMapper.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/.gitignore" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/br/com/carlosrodrigues/core/models/Alunos.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/br/com/carlosrodrigues/core/models/empresa/alunos/Alunos.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/br/com/carlosrodrigues/core/models/Frequencia.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/br/com/carlosrodrigues/core/models/empresa/frequencias/Frequencia.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/br/com/carlosrodrigues/core/repositories/IAlunosRepository.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/br/com/carlosrodrigues/core/repositories/IFrequenciaRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/br/com/carlosrodrigues/core/repositories/empresa/frequencias/IFrequenciaRepository.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/br/com/carlosrodrigues/web/controllers/AlunosController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/br/com/carlosrodrigues/web/controllers/usuario/alunos/AlunosController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/br/com/carlosrodrigues/web/controllers/ApplicationControllerAdvice.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/br/com/carlosrodrigues/web/controllers/global/ApplicationControllerAdvice.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/br/com/carlosrodrigues/web/controllers/FrequenciaController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/br/com/carlosrodrigues/web/controllers/usuario/frequencias/FrequenciaController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/br/com/carlosrodrigues/web/dtos/AlunosDTO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/br/com/carlosrodrigues/web/dtos/usuario/alunos/AlunosDTO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/br/com/carlosrodrigues/web/dtos/AlunosPageDTO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/br/com/carlosrodrigues/web/dtos/usuario/alunos/AlunosPageDTO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/br/com/carlosrodrigues/web/dtos/FrequenciaDTO.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/br/com/carlosrodrigues/web/dtos/FrequenciaPageDTO.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/br/com/carlosrodrigues/web/dtos/FrequenciaResumoDTO.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/br/com/carlosrodrigues/web/dtos/FrequenciaResumoPageDTO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/br/com/carlosrodrigues/web/dtos/usuario/frequencias/FrequenciaResumoPageDTO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/br/com/carlosrodrigues/web/mappers/IAlunosMapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/br/com/carlosrodrigues/web/mappers/usuario/alunos/IAlunosMapper.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/br/com/carlosrodrigues/web/mappers/IFrequenciaMapper.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/br/com/carlosrodrigues/web/services/AlunosService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/br/com/carlosrodrigues/web/services/usuario/alunos/AlunosService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/br/com/carlosrodrigues/web/services/FrequenciaService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/br/com/carlosrodrigues/web/services/usuario/frequencias/FrequenciaService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/config/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/config/application.properties" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../front-end/front-end-angular/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/../../front-end/front-end-angular/package-lock.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../front-end/front-end-angular/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/../../front-end/front-end-angular/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../front-end/front-end-angular/src/app/alunos/alunos.route.ts" beforeDir="false" afterPath="$PROJECT_DIR$/../../front-end/front-end-angular/src/app/alunos/alunos.route.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../front-end/front-end-angular/src/app/alunos/components/alunos-lista/alunos-lista.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/../../front-end/front-end-angular/src/app/alunos/components/alunos-lista/alunos-lista.component.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../front-end/front-end-angular/src/app/alunos/containers/alunos/alunos.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/../../front-end/front-end-angular/src/app/alunos/containers/alunos/alunos.component.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../front-end/front-end-angular/src/app/alunos/containers/alunos/alunos.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/../../front-end/front-end-angular/src/app/alunos/containers/alunos/alunos.component.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../front-end/front-end-angular/src/app/alunos/services/alunos.service.ts" beforeDir="false" afterPath="$PROJECT_DIR$/../../front-end/front-end-angular/src/app/alunos/services/alunos.service.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../front-end/front-end-angular/src/app/app.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/../../front-end/front-end-angular/src/app/app.component.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../front-end/front-end-angular/src/app/app.config.ts" beforeDir="false" afterPath="$PROJECT_DIR$/../../front-end/front-end-angular/src/app/app.config.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../front-end/front-end-angular/src/app/app.routes.ts" beforeDir="false" afterPath="$PROJECT_DIR$/../../front-end/front-end-angular/src/app/app.routes.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../front-end/front-end-angular/src/app/app.variaveis.scss" beforeDir="false" afterPath="$PROJECT_DIR$/../../front-end/front-end-angular/src/app/app.variaveis.scss" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../front-end/front-end-angular/src/app/frequencia/containers/frequencia/frequencia.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/../../front-end/front-end-angular/src/app/frequencia/containers/frequencia/frequencia.component.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../front-end/front-end-angular/src/app/frequencia/containers/frequencia/frequencia.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/../../front-end/front-end-angular/src/app/frequencia/containers/frequencia/frequencia.component.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../front-end/front-end-angular/src/app/frequencia/services/frequencia.service.ts" beforeDir="false" afterPath="$PROJECT_DIR$/../../front-end/front-end-angular/src/app/frequencia/services/frequencia.service.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/br/com/carlosrodrigues/infra/security/config/SecurityConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/br/com/carlosrodrigues/infra/security/config/SecurityConfig.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -133,6 +86,8 @@
       <workItem from="1747861396187" duration="47000" />
       <workItem from="1748044026039" duration="3468000" />
       <workItem from="1748198883798" duration="12381000" />
+      <workItem from="1748270433275" duration="98000" />
+      <workItem from="1748280506238" duration="1966000" />
     </task>
     <servers />
   </component>

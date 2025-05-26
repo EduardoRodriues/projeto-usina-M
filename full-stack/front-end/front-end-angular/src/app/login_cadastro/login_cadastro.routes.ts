@@ -17,8 +17,4 @@ export const login_cadastro_routes: Routes = [
         (m) => m.SignupComponent
       ),
   },
-  {
-    path: 'alunos',
-    children: alunos_routes,
-  },
 ];
