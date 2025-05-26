@@ -1,46 +1,50 @@
-
 <app-layout-padrao
-    title="Sign in and start today!t"
-    primaryBtnText="Signup Now"
-    secondaryBtnText="Login Now"
-    (submit)="submit()"
-    (navigate)="navigate()"
-    [disablePrimaryBtn]="!signupForm.valid"
+  title="Sign up and start today!"
+  primaryBtnText="Cadastrar"
+  secondaryBtnText="Já tenho conta"
+  (submit)="submit()"
+  (navigate)="navigate()"
+  [disablePrimaryBtn]="!signupForm.valid"
 >
-    <form [formGroup]="signupForm">
-        <app-primeiro-input
-            formControlName="name"
-            inputName="name"
-            type="text"
-            label="Your name"
-            placeholder="John Doe"
-        >
-            <img src="#"/>
-        </app-primeiro-input>
-        <app-primeiro-input
-            formControlName="email"
-            inputName="email"
-            type="email"
-            label="Email"
-            placeholder="johndoe@gmail.com"
-        >
-            <img src="#"/>
-        </app-primeiro-input>
-        <app-primeiro-input
-            formControlName="password"
-            inputName="password"
-            type="password"
-            label="Your Password"
-        >
-        <img src="#"/>
-    </app-primeiro-input>
+  <form [formGroup]="signupForm">
     <app-primeiro-input
-        formControlName="passwordConfirm"
-        inputName="passwordConfirm"
-        type="password"
-        label="Confirm your Password"
+      formControlName="nome"
+      inputName="nome"
+      type="text"
+      label="Seu nome"
+      placeholder="Ex: João Silva"
     >
-        <img src="#"/>
+      <img src="#" />
     </app-primeiro-input>
-    </form>
+
+    <app-primeiro-input
+      formControlName="email"
+      inputName="email"
+      type="email"
+      label="Email"
+      placeholder="seu@email.com"
+    >
+      <img src="#" />
+    </app-primeiro-input>
+
+    <app-primeiro-input
+      formControlName="senha"
+      inputName="senha"
+      type="password"
+      label="Senha"
+      placeholder="Mínimo 6 caracteres"
+    >
+      <img src="#" />
+    </app-primeiro-input>
+
+    <app-primeiro-input
+      formControlName="confSenha"
+      inputName="confSenha"
+      type="password"
+      label="Confirmar senha"
+      placeholder="Repita a senha"
+    >
+      <img src="#" />
+    </app-primeiro-input>
+  </form>
 </app-layout-padrao>
