@@ -1,7 +1,5 @@
 package br.com.carlosrodrigues.web.controllers;
 
-import br.com.carlosrodrigues.web.dtos.FrequenciaDTO;
-import br.com.carlosrodrigues.web.dtos.FrequenciaPageDTO;
 import br.com.carlosrodrigues.web.dtos.FrequenciaResumoPageDTO;
 import br.com.carlosrodrigues.web.services.FrequenciaService;
 import jakarta.validation.constraints.Max;
@@ -14,8 +12,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
-import java.util.List;
-
 @RestController
 @Validated
 @RequestMapping("/api/frequencias")
@@ -27,7 +23,9 @@ public class FrequenciaController {
     @GetMapping
     public FrequenciaResumoPageDTO listarTodos(
             @RequestParam(defaultValue = "0") @PositiveOrZero int page,
-            @RequestParam(defaultValue = "10") @Positive @Max(100) int tamanho) {
-        return frequenciaService.listarFrequenciasResumo(page, tamanho);
+            @RequestParam(defaultValue = "10") @Positive @Max(100) int tamanho,
+            @RequestParam(required = false) String nome) {
+        return frequenciaService.listarFrequenciasResumo(page, tamanho, nome);
     }
+
 }

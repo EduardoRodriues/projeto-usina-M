@@ -25,8 +25,9 @@ public class AlunosController {
 
     @GetMapping
     public AlunosPageDTO listarTodos(@RequestParam(defaultValue = "0") @PositiveOrZero int page,
-                                     @Positive @Max(100) @RequestParam(defaultValue = "10") int tamanho) {
-        return alunosService.listarTodos(page, tamanho);
+                                     @Positive @Max(100) @RequestParam(defaultValue = "10") int tamanho,
+                                     @RequestParam(required = false) String nome) {
+        return alunosService.listarTodos(page, tamanho, nome);
     }
 
     @PostMapping

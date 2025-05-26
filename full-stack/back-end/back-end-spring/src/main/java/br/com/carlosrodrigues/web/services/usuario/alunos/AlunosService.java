@@ -14,6 +14,7 @@ import jakarta.validation.constraints.PositiveOrZero;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -28,9 +29,20 @@ public class AlunosService {
     @Autowired
     private IAlunosMapper alunosMapper;
 
-    public AlunosPageDTO listarTodos(@PositiveOrZero int page, @Positive @Max(100) int tamanho) {
-        Page<Alunos> pageAlunos = alunosRepository.findAll(PageRequest.of(page, tamanho));
-        List<AlunosDTO> alunos = pageAlunos.get().map(alunosMapper::toDTO).collect(Collectors.toList());
+    public AlunosPageDTO listarTodos(@PositiveOrZero int page, @Positive @Max(100) int tamanho, String nome) {
+        Pageable pageable = PageRequest.of(page, tamanho);
+        Page<Alunos> pageAlunos;
+
+        if (nome != null && !nome.isBlank()) {
+            pageAlunos = alunosRepository.findByNomeContainingIgnoreCase(nome, pageable);
+        } else {
+            pageAlunos = alunosRepository.findAll(pageable);
+        }
+
+        List<AlunosDTO> alunos = pageAlunos.stream()
+                .map(alunosMapper::toDTO)
+                .collect(Collectors.toList());
+
         return new AlunosPageDTO(alunos, pageAlunos.getTotalElements(), pageAlunos.getTotalPages());
     }
 
