@@ -43,19 +43,27 @@ public class AuthController {
 
 
     @PostMapping("/register")
-    public ResponseEntity register(@RequestBody RegisterRequestDTO body){
-        Optional<Usuario> user = this.repository.findByEmail(body.email());
+    public ResponseEntity register(@RequestBody RegisterRequestDTO body) {
+        try {
+            Optional<Usuario> user = repository.findByEmail(body.email());
 
-        if(user.isEmpty()) {
-            Usuario newUser = new Usuario();
-            newUser.setSenha(passwordEncoder.encode(body.senha()));
-            newUser.setEmail(body.email());
-            newUser.setNome(body.nome());
-            this.repository.save(newUser);
+            if (user.isEmpty()) {
+                Usuario newUser = new Usuario();
+                newUser.setSenha(passwordEncoder.encode(body.senha()));
+                newUser.setEmail(body.email());
+                newUser.setNome(body.nome());
+                Usuario savedUser = repository.save(newUser);
 
-            String token = this.tokenService.gerarToken(newUser);
-            return ResponseEntity.ok(new ResponseDTO(newUser.getNome(), token));
+                System.out.println("SALVO COM ID: " + savedUser.getId());
+
+                String token = tokenService.gerarToken(newUser);
+                return ResponseEntity.ok(new ResponseDTO(newUser.getNome(), token));
+            }
+            return ResponseEntity.badRequest().body("Usuário já existe.");
+        } catch (Exception e) {
+            e.printStackTrace();
+            return ResponseEntity.status(500).body("Erro ao registrar usuário: " + e.getMessage());
         }
-        return ResponseEntity.badRequest().build();
     }
+
 }

@@ -17,6 +17,7 @@ export const routes: Routes = [
   },
   {
     path: 'frequencias',
+    canActivate: [AuthGuard],
     children: frequencia_routes,
   },
 ];

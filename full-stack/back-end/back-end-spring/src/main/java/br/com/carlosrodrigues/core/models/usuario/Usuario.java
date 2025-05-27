@@ -1,5 +1,6 @@
 package br.com.carlosrodrigues.core.models.usuario;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.NoArgsConstructor;
@@ -11,15 +12,19 @@ public class Usuario {
 
     @Id
     @GeneratedValue(strategy = GenerationType.UUID)
+    @JsonProperty("id")
     private String id;
 
     @Column(name = "nome", nullable = false)
+    @JsonProperty("nome")
     private String nome;
 
     @Column(name = "email", nullable = false)
+    @JsonProperty("email")
     private String email;
 
     @Column(name = "senha", nullable = false)
+    @JsonProperty("senha")
     private String senha;
 
     public String getId() {

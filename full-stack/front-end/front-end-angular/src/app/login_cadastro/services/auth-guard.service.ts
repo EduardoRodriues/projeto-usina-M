@@ -11,7 +11,14 @@ export class AuthGuard implements CanActivate {
 
   canActivate(
     next: ActivatedRouteSnapshot,
-    state: RouterStateSnapshot): Observable<boolean | UrlTree> | Promise<boolean | UrlTree> | boolean | UrlTree {
+    state: RouterStateSnapshot
+  ): Observable<boolean | UrlTree> | Promise<boolean | UrlTree> | boolean | UrlTree {
+    const isBrowser = typeof window !== 'undefined' && typeof window.sessionStorage !== 'undefined';
+
+    if (!isBrowser) {
+      return false;
+    }
+
     const authToken = sessionStorage.getItem('auth-token');
 
     if (authToken) {
