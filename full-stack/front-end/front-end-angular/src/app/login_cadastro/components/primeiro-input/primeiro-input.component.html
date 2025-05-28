@@ -1,6 +1,9 @@
 <div class="input-wrapper">
   <label [for]="inputName">{{ label }}</label>
   <div class="input-content">
+    <div class="icon">
+      <ng-content></ng-content>
+    </div>
     <input
       [type]="type"
       [placeholder]="placeholder"
@@ -10,8 +13,5 @@
       [name]="inputName"
       [id]="inputName"
     />
-    <div class="icon">
-      <ng-content></ng-content>
-    </div>
   </div>
 </div>

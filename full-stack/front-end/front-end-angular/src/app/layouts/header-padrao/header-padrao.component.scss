@@ -1,0 +1,43 @@
+header {
+  background-color: #000;
+  color: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 1rem 1.5rem;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+  position: relative;
+
+  .breadcrumbs {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+
+    i {
+      font-size: 1.25rem;
+    }
+
+    span {
+      font-size: 0.875rem;
+
+      &.active {
+        font-weight: 500;
+      }
+    }
+  }
+
+  h1 {
+    font-size: 1.5rem;
+    font-weight: bold;
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+  }
+
+  .logout {
+    i {
+      font-size: 1.25rem;
+      cursor: pointer;
+    }
+  }
+}

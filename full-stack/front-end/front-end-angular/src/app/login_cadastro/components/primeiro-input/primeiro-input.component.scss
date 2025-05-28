@@ -7,6 +7,7 @@
 
     label {
         margin-bottom: 10px;
+        font-weight: 400;
     }
 
     .input-content {
@@ -17,7 +18,7 @@
         .icon {
             padding: 12px;
             background-color: $primary-color;
-            border-radius: 0 8px 8px 0;
+            border-radius: 8px 0 0 8px;
 
             img {
                 height: 20px;
@@ -25,11 +26,11 @@
         }
 
         input {
-            border: none;
-            border-radius: 8px 0 0 8px;
-            background-color: $gray-secondary-bg;
-            padding: 12px 0 12px 20px;
+            border: 1px solid $gray-bg;
+            border-radius: 0 8px 8px 0;
+            padding: 12px 0 12px 10px;
             width: 100%;
+            font-size: 14px;
         }
     }
 }

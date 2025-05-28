@@ -1,7 +1,7 @@
-package br.com.carlosrodrigues.core.repositories.empresa.frequencias;
+package br.com.carlosrodrigues.core.repositories.geral.frequencias;
 
-import br.com.carlosrodrigues.core.models.empresa.alunos.Alunos;
-import br.com.carlosrodrigues.core.models.empresa.frequencias.Frequencia;
+import br.com.carlosrodrigues.core.models.geral.alunos.Alunos;
+import br.com.carlosrodrigues.core.models.geral.frequencias.Frequencia;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.repository.EntityGraph;

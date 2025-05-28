@@ -20,7 +20,11 @@
 
 <section>
   <div class="mat-elevation-z8" *ngIf="frequencias | async as frequencias">
-    <app-lista-frequencia [frequencias]="frequencias.alunos"></app-lista-frequencia>
+    <app-lista-frequencia
+      [frequencias]="frequencias.alunos"
+      (presencaChange)="atualizarPresenca($event)"
+    >
+    </app-lista-frequencia>
 
     <mat-paginator
       showFirstLastButtons

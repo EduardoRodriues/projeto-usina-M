@@ -1,7 +1,9 @@
 <app-layout-padrao
-  title="Sign up and start today!"
+  title="Cadastrar-se e comece agora!"
+  subtitle="Preencha com seus dados"
+  redirect="Já possui uma conta?"
   primaryBtnText="Cadastrar"
-  secondaryBtnText="Já tenho conta"
+  secondaryBtnText="Fazer login"
   (submit)="submit()"
   (navigate)="navigate()"
   [disablePrimaryBtn]="!signupForm.valid"
@@ -14,7 +16,7 @@
       label="Seu nome"
       placeholder="Ex: João Silva"
     >
-      <img src="#" />
+      <img src="img/user.png" alt="usuario" />
     </app-primeiro-input>
 
     <app-primeiro-input
@@ -24,7 +26,7 @@
       label="Email"
       placeholder="seu@email.com"
     >
-      <img src="#" />
+      <img src="img/e-mail.png" alt="email" class="img-email" />
     </app-primeiro-input>
 
     <app-primeiro-input
@@ -34,7 +36,7 @@
       label="Senha"
       placeholder="Mínimo 6 caracteres"
     >
-      <img src="#" />
+      <img src="img/trancar.png" alt="senha" />
     </app-primeiro-input>
 
     <app-primeiro-input
@@ -42,9 +44,9 @@
       inputName="confSenha"
       type="password"
       label="Confirmar senha"
-      placeholder="Repita a senha"
+      placeholder="Repita sua senha"
     >
-      <img src="#" />
+      <img src="img/trancar.png" alt="senha" />
     </app-primeiro-input>
   </form>
 </app-layout-padrao>

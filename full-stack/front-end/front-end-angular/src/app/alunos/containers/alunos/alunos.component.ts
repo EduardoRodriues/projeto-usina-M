@@ -25,6 +25,7 @@ import { FormControl, FormsModule } from '@angular/forms';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { ReactiveFormsModule } from '@angular/forms';
+import { HeaderPadraoComponent } from "../../../layouts/header-padrao/header-padrao.component";
 
 @Component({
   selector: 'app-alunos',
@@ -43,8 +44,9 @@ import { ReactiveFormsModule } from '@angular/forms';
     FormsModule,
     MatFormFieldModule,
     MatInputModule,
-    ReactiveFormsModule
-  ],
+    ReactiveFormsModule,
+    HeaderPadraoComponent
+],
   templateUrl: './alunos.component.html',
   styleUrl: './alunos.component.scss',
   standalone: true,

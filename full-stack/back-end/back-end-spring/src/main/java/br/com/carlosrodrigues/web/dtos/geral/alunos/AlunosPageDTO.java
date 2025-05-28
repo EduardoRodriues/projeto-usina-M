@@ -1,4 +1,4 @@
-package br.com.carlosrodrigues.web.dtos.usuario.alunos;
+package br.com.carlosrodrigues.web.dtos.geral.alunos;
 
 import java.util.List;
 

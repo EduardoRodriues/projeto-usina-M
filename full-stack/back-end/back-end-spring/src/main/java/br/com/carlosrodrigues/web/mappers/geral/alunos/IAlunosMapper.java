@@ -1,7 +1,7 @@
-package br.com.carlosrodrigues.web.mappers.usuario.alunos;
+package br.com.carlosrodrigues.web.mappers.geral.alunos;
 
-import br.com.carlosrodrigues.core.models.empresa.alunos.Alunos;
-import br.com.carlosrodrigues.web.dtos.usuario.alunos.AlunosDTO;
+import br.com.carlosrodrigues.core.models.geral.alunos.Alunos;
+import br.com.carlosrodrigues.web.dtos.geral.alunos.AlunosDTO;
 import org.mapstruct.Mapper;
 
 @Mapper(componentModel = "spring")

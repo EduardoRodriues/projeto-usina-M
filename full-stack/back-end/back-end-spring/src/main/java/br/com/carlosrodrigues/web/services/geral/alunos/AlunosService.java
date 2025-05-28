@@ -1,11 +1,11 @@
-package br.com.carlosrodrigues.web.services.usuario.alunos;
+package br.com.carlosrodrigues.web.services.geral.alunos;
 
 import br.com.carlosrodrigues.core.exceptions.RecordNotFoundException;
-import br.com.carlosrodrigues.core.models.empresa.alunos.Alunos;
-import br.com.carlosrodrigues.core.repositories.empresa.alunos.IAlunosRepository;
-import br.com.carlosrodrigues.web.dtos.usuario.alunos.AlunosPageDTO;
-import br.com.carlosrodrigues.web.mappers.usuario.alunos.IAlunosMapper;
-import br.com.carlosrodrigues.web.dtos.usuario.alunos.AlunosDTO;
+import br.com.carlosrodrigues.core.models.geral.alunos.Alunos;
+import br.com.carlosrodrigues.core.repositories.geral.alunos.IAlunosRepository;
+import br.com.carlosrodrigues.web.dtos.geral.alunos.AlunosPageDTO;
+import br.com.carlosrodrigues.web.mappers.geral.alunos.IAlunosMapper;
+import br.com.carlosrodrigues.web.dtos.geral.alunos.AlunosDTO;
 import jakarta.validation.Valid;
 import jakarta.validation.constraints.Max;
 import jakarta.validation.constraints.NotNull;

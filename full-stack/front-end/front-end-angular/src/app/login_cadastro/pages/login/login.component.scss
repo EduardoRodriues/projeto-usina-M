@@ -8,10 +8,15 @@ form {
     gap: 24px;
     margin-bottom: 34px;
 
-    span {
-        font-size: 14px;
+    img {
+        width: 20px;
+        height: 20px;
         text-decoration: underline;
-        color: $secondary-color;
         text-align: end;
+    }
+
+    .img-email {
+      width: 22px;
+      height: 22px;
     }
 }

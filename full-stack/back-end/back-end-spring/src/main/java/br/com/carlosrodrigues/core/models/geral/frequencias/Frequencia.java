@@ -1,5 +1,5 @@
-package br.com.carlosrodrigues.core.models.empresa.frequencias;
-import br.com.carlosrodrigues.core.models.empresa.alunos.Alunos;
+package br.com.carlosrodrigues.core.models.geral.frequencias;
+import br.com.carlosrodrigues.core.models.geral.alunos.Alunos;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;

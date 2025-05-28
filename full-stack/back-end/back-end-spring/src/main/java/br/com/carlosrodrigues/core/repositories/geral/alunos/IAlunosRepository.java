@@ -1,6 +1,6 @@
-package br.com.carlosrodrigues.core.repositories.empresa.alunos;
+package br.com.carlosrodrigues.core.repositories.geral.alunos;
 
-import br.com.carlosrodrigues.core.models.empresa.alunos.Alunos;
+import br.com.carlosrodrigues.core.models.geral.alunos.Alunos;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.repository.JpaRepository;

@@ -1,4 +1,4 @@
-package br.com.carlosrodrigues.web.dtos.usuario.alunos;
+package br.com.carlosrodrigues.web.dtos.geral.alunos;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 import jakarta.validation.constraints.Email;

@@ -1,9 +1,9 @@
-package br.com.carlosrodrigues.web.controllers.usuario.alunos;
+package br.com.carlosrodrigues.web.controllers.geral.alunos;
 
-import br.com.carlosrodrigues.core.models.empresa.alunos.Alunos;
-import br.com.carlosrodrigues.web.dtos.usuario.alunos.AlunosDTO;
-import br.com.carlosrodrigues.web.dtos.usuario.alunos.AlunosPageDTO;
-import br.com.carlosrodrigues.web.services.usuario.alunos.AlunosService;
+import br.com.carlosrodrigues.core.models.geral.alunos.Alunos;
+import br.com.carlosrodrigues.web.dtos.geral.alunos.AlunosDTO;
+import br.com.carlosrodrigues.web.dtos.geral.alunos.AlunosPageDTO;
+import br.com.carlosrodrigues.web.services.geral.alunos.AlunosService;
 import jakarta.validation.Valid;
 import jakarta.validation.constraints.Max;
 import jakarta.validation.constraints.NotNull;

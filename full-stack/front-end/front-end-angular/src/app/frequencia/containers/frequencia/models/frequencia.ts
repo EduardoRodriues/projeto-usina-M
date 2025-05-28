@@ -4,4 +4,5 @@ export interface Frequencias{
   nome: string;
   email: string;
   frequencia: number;
+  presenteHoje: boolean;
 }

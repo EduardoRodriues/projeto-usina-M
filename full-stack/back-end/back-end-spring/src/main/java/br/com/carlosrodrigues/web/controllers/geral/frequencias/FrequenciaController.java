@@ -1,7 +1,7 @@
-package br.com.carlosrodrigues.web.controllers.usuario.frequencias;
+package br.com.carlosrodrigues.web.controllers.geral.frequencias;
 
-import br.com.carlosrodrigues.web.dtos.usuario.frequencias.FrequenciaResumoPageDTO;
-import br.com.carlosrodrigues.web.services.usuario.frequencias.FrequenciaService;
+import br.com.carlosrodrigues.web.dtos.geral.frequencias.FrequenciaPageDTO;
+import br.com.carlosrodrigues.web.services.geral.frequencias.FrequenciaService;
 import jakarta.validation.constraints.Max;
 import jakarta.validation.constraints.Positive;
 import jakarta.validation.constraints.PositiveOrZero;
@@ -18,7 +18,7 @@ public class FrequenciaController {
     private FrequenciaService frequenciaService;
 
     @GetMapping
-    public FrequenciaResumoPageDTO listarTodos(
+    public FrequenciaPageDTO listarTodos(
             @RequestParam(defaultValue = "0") @PositiveOrZero int page,
             @RequestParam(defaultValue = "10") @Positive @Max(100) int tamanho,
             @RequestParam(required = false) String nome) {

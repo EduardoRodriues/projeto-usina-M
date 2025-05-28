@@ -126,4 +126,17 @@ export class FrequenciaComponent implements OnInit {
       data: errorMsg,
     });
   }
+
+  atualizarPresenca(event: { id: number; presente: boolean }) {
+  this.frequenciasService.registrarPresenca(event.id, event.presente)
+    .subscribe({
+      next: () => {
+        this.frequencias = this.frequenciasService.listarTodos(this.pageIndex, this.pageSize, this.searchControl.value || '');
+      },
+      error: () => this.onError('Erro ao atualizar presença'),
+    });
+}
+
+
+
 }

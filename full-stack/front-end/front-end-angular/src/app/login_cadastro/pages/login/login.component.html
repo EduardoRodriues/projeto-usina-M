@@ -1,28 +1,31 @@
 <app-layout-padrao
-    title="Login into your account"
-    primaryBtnText="Entrar"
-    secondaryBtnText="Cadastrar-se"
-    (submit)="submit()"
-    (navigate)="navigate()"
-    [disablePrimaryBtn]="!loginForm.valid"
+  title="Bem-vindo de volta!"
+  subtitle="Acesse sua conta para continuar"
+  redirect="Não tem uma conta de Administrador?"
+  primaryBtnText="Entrar"
+  secondaryBtnText="Cadastrar-se"
+  (submit)="submit()"
+  (navigate)="navigate()"
+  [disablePrimaryBtn]="!loginForm.valid"
 >
-    <form [formGroup]="loginForm">
-        <app-primeiro-input
-            formControlName="email"
-            inputName="email"
-            type="email"
-            label="Email"
-            placeholder="administrador@gmail.com"
-        >
-            <img src="#"/>
-        </app-primeiro-input>
-        <app-primeiro-input
-            formControlName="password"
-            inputName="password"
-            type="password"
-            label="Your Password"
-        >
-        <img src="#"/>
+  <form [formGroup]="loginForm">
+    <app-primeiro-input
+      formControlName="email"
+      inputName="email"
+      type="email"
+      label="Email"
+      placeholder="exemplo@escola.com"
+    >
+      <img src="img/e-mail.png" alt="email" class="img-email">
     </app-primeiro-input>
-    </form>
+    <app-primeiro-input
+      formControlName="password"
+      inputName="password"
+      type="password"
+      label="Sua senha"
+      placeholder="••••••••"
+    >
+      <img src="img/trancar.png" alt="senha">
+    </app-primeiro-input>
+  </form>
 </app-layout-padrao>

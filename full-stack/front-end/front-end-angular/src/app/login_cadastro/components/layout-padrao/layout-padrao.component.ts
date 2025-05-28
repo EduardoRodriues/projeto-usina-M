@@ -7,6 +7,8 @@ import { Component, EventEmitter, Input, Output } from '@angular/core';
 })
 export class LayoutPadraoComponent {
   @Input() title: string = '';
+  @Input() subtitle: string = '';
+  @Input() redirect: string = '';
   @Input() primaryBtnText: string = '';
   @Input() secondaryBtnText: string = '';
   @Input() disablePrimaryBtn: boolean = true;

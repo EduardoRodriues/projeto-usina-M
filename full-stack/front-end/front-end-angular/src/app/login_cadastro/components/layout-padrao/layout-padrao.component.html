@@ -1,24 +1,28 @@
 <main>
+  <section class="main-section">
+    <img src="/img/bandadireta.png" alt="Imagem principal" class="main-image" />
+  </section>
+
   <section class="form-section">
-    <img src="#" />
+    <img src="img/images.png" alt="Imagem menor" />
     <h2>{{ title }}</h2>
+    <p>{{ subtitle }}</p>
     <ng-content></ng-content>
     <div class="btn-wrapper">
-      <button class="btn-primary" type="button" (click)="onSubmit()" [disabled]="disablePrimaryBtn">
+      <button
+        class="btn-primary"
+        type="button"
+        (click)="onSubmit()"
+        [disabled]="disablePrimaryBtn"
+      >
         {{ primaryBtnText }}
       </button>
-      <div class="divider">
-        <div></div>
-        <span>or</span>
-        <div></div>
+      <div class="cad-lay">
+        <p>{{ redirect }}</p>
+        <button class="btn-secondary" type="button" (click)="onNavigate()">
+          {{ secondaryBtnText }}
+        </button>
       </div>
-      <button class="btn-secondary" type="button" (click)="onNavigate()">
-        {{ secondaryBtnText }}
-      </button>
     </div>
-  </section>
-  <section class="main-section">
-    <h1>You Should, MoveIt!</h1>
-    <img src="#" />
   </section>
 </main>

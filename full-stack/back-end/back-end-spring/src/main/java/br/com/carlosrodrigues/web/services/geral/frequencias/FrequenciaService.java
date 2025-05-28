@@ -1,11 +1,11 @@
-package br.com.carlosrodrigues.web.services.usuario.frequencias;
+package br.com.carlosrodrigues.web.services.geral.frequencias;
 
-import br.com.carlosrodrigues.core.models.empresa.alunos.Alunos;
-import br.com.carlosrodrigues.core.models.empresa.frequencias.Frequencia;
-import br.com.carlosrodrigues.core.repositories.empresa.alunos.IAlunosRepository;
-import br.com.carlosrodrigues.core.repositories.empresa.frequencias.IFrequenciaRepository;
-import br.com.carlosrodrigues.web.dtos.usuario.frequencias.FrequenciaResumoDTO;
-import br.com.carlosrodrigues.web.dtos.usuario.frequencias.FrequenciaResumoPageDTO;
+import br.com.carlosrodrigues.core.models.geral.alunos.Alunos;
+import br.com.carlosrodrigues.core.models.geral.frequencias.Frequencia;
+import br.com.carlosrodrigues.core.repositories.geral.alunos.IAlunosRepository;
+import br.com.carlosrodrigues.core.repositories.geral.frequencias.IFrequenciaRepository;
+import br.com.carlosrodrigues.web.dtos.geral.frequencias.FrequenciaDTO;
+import br.com.carlosrodrigues.web.dtos.geral.frequencias.FrequenciaPageDTO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
@@ -25,7 +25,7 @@ public class FrequenciaService {
     @Autowired
     private IFrequenciaRepository frequenciaRepository;
 
-    public FrequenciaResumoPageDTO listarFrequenciasResumo(int page, int tamanho, String nome) {
+    public FrequenciaPageDTO listarFrequenciasResumo(int page, int tamanho, String nome) {
         Pageable pageable = PageRequest.of(page, tamanho);
         Page<Alunos> alunosPage;
 
@@ -37,13 +37,13 @@ public class FrequenciaService {
 
         LocalDate hoje = LocalDate.now();
 
-        List<FrequenciaResumoDTO> conteudo = alunosPage.stream().map(aluno -> {
+        List<FrequenciaDTO> conteudo = alunosPage.stream().map(aluno -> {
             int totalPresencas = frequenciaRepository.countByAlunoAndPresenteTrue(aluno);
             boolean presenteHoje = frequenciaRepository.findByAlunoAndData(aluno, hoje).isPresent();
-            return FrequenciaResumoDTO.from(aluno, totalPresencas, presenteHoje);
+            return FrequenciaDTO.from(aluno, totalPresencas, presenteHoje);
         }).toList();
 
-        return new FrequenciaResumoPageDTO(
+        return new FrequenciaPageDTO(
                 conteudo,
                 alunosPage.getTotalElements(),
                 alunosPage.getTotalPages()

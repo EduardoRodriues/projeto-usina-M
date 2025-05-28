@@ -1,4 +1,4 @@
-package br.com.carlosrodrigues.web.dtos.usuario.frequencias;
+package br.com.carlosrodrigues.web.dtos.geral.frequencias;
 
 import java.time.LocalDate;
 

@@ -7,33 +7,47 @@ import { RouterOutlet } from '@angular/router';
 import { MatSelectModule } from '@angular/material/select';
 import { CommonModule } from '@angular/common';
 import { MatMenuModule } from '@angular/material/menu';
+import { MatCheckboxModule } from '@angular/material/checkbox';
 
 @Component({
   selector: 'app-lista-frequencia',
-  imports: [MatTableModule,
+  imports: [
+    MatTableModule,
     MatButtonModule,
     MatIconModule,
     RouterOutlet,
     MatSelectModule,
     CommonModule,
-    MatMenuModule,],
+    MatMenuModule,
+    MatButtonModule,
+    MatCheckboxModule,
+  ],
   templateUrl: './lista-frequencia.component.html',
-  styleUrl: './lista-frequencia.component.scss'
+  styleUrl: './lista-frequencia.component.scss',
 })
 export class ListaFrequenciaComponent {
-
   @Input() frequencias: Frequencias[] = [];
 
   buttonUpdateOrDelete!: boolean;
 
   displayedColumns: string[] = ['aluno', 'frequencia', 'actions'];
 
-  @Output() add = new EventEmitter(false);
+  @Output() add = new EventEmitter<boolean>();
+  @Output() presencaChange = new EventEmitter<{ id: number; presente: boolean; data: string }>();
 
-  constructor() {}
+
+  hoje: string = new Date().toISOString().split('T')[0];
+
+  onTogglePresenca(frequencia: Frequencias) {
+    const novoValor = !frequencia.presenteHoje;
+    this.presencaChange.emit({
+      id: frequencia.alunoId,
+      presente: novoValor,
+      data: this.hoje,
+    });
+  }
 
   addPresenca() {
     this.add.emit(true);
   }
-
 }

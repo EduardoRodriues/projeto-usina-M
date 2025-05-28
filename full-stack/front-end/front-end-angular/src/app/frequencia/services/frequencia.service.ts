@@ -4,10 +4,9 @@ import { FrequenciasPage } from '../containers/frequencia/models/frequencia-page
 import { first, tap } from 'rxjs';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class FrequenciaService {
-
   private readonly API = 'api/frequencias';
 
   constructor(private http: HttpClient) {}
@@ -21,11 +20,18 @@ export class FrequenciaService {
       params = params.set('nome', nomeFiltro.trim());
     }
 
+    return this.http.get<FrequenciasPage>(this.API, { params }).pipe(
+      first(),
+      tap((frequencias) => console.log(frequencias))
+    );
+  }
+
+  registrarPresenca(id: number, presente: boolean) {
     return this.http
-      .get<FrequenciasPage>(this.API, { params })
-      .pipe(
-        first(),
-        tap((frequencias) => console.log(frequencias))
-      );
+      .post(`${this.API}/registrar`, {
+        alunoId: id,
+        presente: presente,
+      })
+      .pipe(first());
   }
 }
