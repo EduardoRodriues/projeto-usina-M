@@ -7,10 +7,7 @@ import jakarta.validation.constraints.Positive;
 import jakarta.validation.constraints.PositiveOrZero;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.validation.annotation.Validated;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 @RestController
 @Validated
@@ -27,5 +24,12 @@ public class FrequenciaController {
             @RequestParam(required = false) String nome) {
         return frequenciaService.listarFrequenciasResumo(page, tamanho, nome);
     }
+
+    @PostMapping("/registrar")
+    public void registrarPresenca(@RequestBody PresencaRequest request) {
+        frequenciaService.registrarPresenca(request.alunoId(), request.presente());
+    }
+
+    public static record PresencaRequest(Long alunoId, boolean presente) {}
 
 }

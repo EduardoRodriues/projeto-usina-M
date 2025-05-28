@@ -8,6 +8,9 @@ import org.springframework.data.jpa.repository.EntityGraph;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
+import java.time.LocalDate;
+import java.util.Optional;
+
 
 @Repository
 public interface IFrequenciaRepository extends JpaRepository<Frequencia, Long> {
@@ -16,5 +19,7 @@ public interface IFrequenciaRepository extends JpaRepository<Frequencia, Long> {
     Page<Frequencia> findAll(Pageable pageable);
 
     int countByAlunoAndPresenteTrue(Alunos aluno);
+
+    Optional<Frequencia> findByAlunoAndData(Alunos aluno, LocalDate data);
 
 }
