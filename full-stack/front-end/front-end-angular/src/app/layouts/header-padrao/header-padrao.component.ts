@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
 
 @Component({
   selector: 'app-header-padrao',
@@ -7,5 +7,8 @@ import { Component } from '@angular/core';
   styleUrl: './header-padrao.component.scss'
 })
 export class HeaderPadraoComponent {
+
+  @Input() classe: string = '';
+  @Input() gestao: string = '';
 
 }

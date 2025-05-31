@@ -1,21 +1,41 @@
+@use "../../app.variaveis.scss" as *;
+
 header {
-  background-color: #000;
-  color: #fff;
+  position: relative;
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 1rem 1.5rem;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
-  position: relative;
+  padding: 1.5rem 2rem;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.4);
+  background-color: $back-ground-side-tool-bar;
+  color: $text-main-color;
+  padding-bottom: 30px;
+
+  .header-center {
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    .header-logo {
+      width: 190px;
+      height: 190px;
+      margin-top: 0.5rem;
+    }
+  }
+
+  .logout img {
+    width: 30px;
+    height: 30px;
+    cursor: pointer;
+  }
 
   .breadcrumbs {
     display: flex;
     align-items: center;
     gap: 0.5rem;
-
-    i {
-      font-size: 1.25rem;
-    }
 
     span {
       font-size: 0.875rem;
@@ -23,21 +43,6 @@ header {
       &.active {
         font-weight: 500;
       }
-    }
-  }
-
-  h1 {
-    font-size: 1.5rem;
-    font-weight: bold;
-    position: absolute;
-    left: 50%;
-    transform: translateX(-50%);
-  }
-
-  .logout {
-    i {
-      font-size: 1.25rem;
-      cursor: pointer;
     }
   }
 }

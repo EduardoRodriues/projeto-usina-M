@@ -26,6 +26,7 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { ReactiveFormsModule } from '@angular/forms';
 import { HeaderPadraoComponent } from "../../../layouts/header-padrao/header-padrao.component";
+import { SidebarComponent } from "../../../layouts/sidebar/sidebar.component";
 
 @Component({
   selector: 'app-alunos',
@@ -45,7 +46,8 @@ import { HeaderPadraoComponent } from "../../../layouts/header-padrao/header-pad
     MatFormFieldModule,
     MatInputModule,
     ReactiveFormsModule,
-    HeaderPadraoComponent
+    HeaderPadraoComponent,
+    SidebarComponent
 ],
   templateUrl: './alunos.component.html',
   styleUrl: './alunos.component.scss',

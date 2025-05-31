@@ -1,6 +1,6 @@
 import { MatTableModule } from '@angular/material/table';
 import { Frequencias } from './../../containers/frequencia/models/frequencia';
-import { Component, Output, Input, EventEmitter } from '@angular/core';
+import { Component, Output, Input, EventEmitter, HostListener } from '@angular/core';
 import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
 import { RouterOutlet } from '@angular/router';
@@ -27,16 +27,12 @@ import { MatCheckboxModule } from '@angular/material/checkbox';
 })
 export class ListaFrequenciaComponent {
   @Input() frequencias: Frequencias[] = [];
-
-  buttonUpdateOrDelete!: boolean;
-
-  displayedColumns: string[] = ['aluno', 'frequencia', 'actions'];
-
-  @Output() add = new EventEmitter<boolean>();
   @Output() presencaChange = new EventEmitter<{ id: number; presente: boolean; data: string }>();
-
+  @Output() edit = new EventEmitter<Frequencias>();
+  @Output() delete = new EventEmitter<Frequencias>();
 
   hoje: string = new Date().toISOString().split('T')[0];
+  openedDropdownIndex: number | null = null;
 
   onTogglePresenca(frequencia: Frequencias) {
     const novoValor = !frequencia.presenteHoje;
@@ -47,7 +43,25 @@ export class ListaFrequenciaComponent {
     });
   }
 
-  addPresenca() {
-    this.add.emit(true);
+  toggleDropdown(index: number) {
+    this.openedDropdownIndex = this.openedDropdownIndex === index ? null : index;
+  }
+
+  editFrequencia(frequencia: Frequencias) {
+    this.edit.emit(frequencia);
+    this.openedDropdownIndex = null;
+  }
+
+  deleteFrequencia(frequencia: Frequencias) {
+    this.delete.emit(frequencia);
+    this.openedDropdownIndex = null;
+  }
+
+  @HostListener('document:click', ['$event'])
+  handleOutsideClick(event: MouseEvent) {
+    const target = event.target as HTMLElement;
+    if (!target.closest('.actions-dropdown')) {
+      this.openedDropdownIndex = null;
+    }
   }
 }

@@ -1,0 +1,161 @@
+@use "../../../app.variaveis.scss" as *;
+
+.form-title {
+  font-family: "Segoe UI", sans-serif;
+  font-weight: 600;
+  font-size: 1.4rem;
+  color: #222;
+  margin: 1.5rem 0 1rem 0;
+  user-select: none;
+  text-align: center;
+}
+
+.form-wrapper {
+  background: #fff;
+  padding: 1.5rem 2rem 2rem 2rem;
+  max-width: 90%;
+  margin: 0 auto 3rem auto;
+  border-radius: 8px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  font-family: "Segoe UI", sans-serif;
+  color: #222;
+}
+
+.form-content {
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+}
+
+.form-row {
+  display: flex;
+  gap: 1.5rem;
+  flex-wrap: wrap;
+}
+
+.form-field {
+  flex: 1 1 45%;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  min-width: 250px;
+}
+
+.form-field label {
+  font-size: 0.9rem;
+  font-weight: 600;
+  margin-bottom: 0.3rem;
+  user-select: none;
+}
+
+.form-field input,
+.form-field select {
+  padding: 0.7rem 1rem;
+  font-size: 1rem;
+  border: 1.5px solid #ccc;
+  border-radius: 8px;
+  transition: border-color 0.25s ease;
+  outline: none;
+}
+
+.form-field select {
+  appearance: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  background-color: #fff;
+  background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='10' height='6' viewBox='0 0 10 6'><path fill='%23666' d='M0 0l5 6 5-6z'/></svg>");
+  background-repeat: no-repeat;
+  background-position: right 1rem center;
+  background-size: 0.65rem;
+  padding-right: 2.5rem;
+  cursor: pointer;
+  border: 1.5px solid #ccc;
+  border-radius: 8px;
+}
+
+.form-field input:focus,
+.form-field select:focus {
+  border-color: lighten($gray-bg, 20%);
+  box-shadow: 0 0 8px rgba(78, 79, 78, 0.4);
+  outline: none;
+  color: #000;
+  transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.form-field small {
+  position: absolute;
+  right: 12px;
+  bottom: 6px;
+  font-size: 0.75rem;
+  color: #666;
+  user-select: none;
+}
+
+.error {
+  margin-top: 0.3rem;
+  font-size: 0.8rem;
+  color: #d32f2f;
+  user-select: none;
+}
+
+.form-actions {
+  margin-top: 1.8rem;
+  display: flex;
+  justify-content: center;
+  gap: 2rem;
+}
+
+.form-actions button {
+  font-weight: 600;
+  font-size: 1rem;
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  user-select: none;
+  height: 40px;
+  line-height: 40px;
+  padding: 0 4.5rem;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.form-actions button.save-btn {
+  background-color: $buttons-add-success-color !important;
+  color: white;
+
+  &:hover {
+    background-color: darken($buttons-add-success-color, 10%);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+  }
+
+  &:focus {
+    outline: none;
+    box-shadow: 0 0 0 3px rgba(72, 180, 97, 0.5), 0 6px 12px rgba(0, 0, 0, 0.15);
+  }
+}
+
+.form-actions button.cancel-btn {
+  background-color: $buttons-add-danger-color !important;
+  color: white;
+
+  &:hover {
+    background-color: darken($buttons-add-danger-color, 10%);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+  }
+
+  &:focus {
+    outline: none;
+    box-shadow: 0 0 0 3px rgba(180, 72, 72, 0.5), 0 6px 12px rgba(0, 0, 0, 0.15);
+  }
+}
+
+@media (max-width: 700px) {
+  .form-row {
+    flex-direction: column;
+  }
+
+  .form-field {
+    flex-basis: 100%;
+    min-width: auto;
+  }
+}

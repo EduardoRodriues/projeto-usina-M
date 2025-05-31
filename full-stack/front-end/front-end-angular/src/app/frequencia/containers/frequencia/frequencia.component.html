@@ -1,42 +1,66 @@
-<section>
-  <div class="container-header-main-content">
-    <div class="acoes-tool-bar">
-      <form class="example-form" (submit)="$event.preventDefault()">
-        <mat-form-field class="example-full-width">
-          <mat-label>Nome do aluno</mat-label>
-          <input
-            matInput
-            type="text"
-            placeholder="aluno(a)"
-            [formControl]="searchControl"
-            autocomplete="off"
-          />
-          <mat-icon matSuffix>search</mat-icon>
-        </mat-form-field>
-      </form>
-    </div>
+<div class="layout">
+  <app-sidebar></app-sidebar>
+
+  <div class="main-content">
+    <app-header-padrao-forms
+      title="Presenças"
+      gestao="Gestão de Presenças"
+    ></app-header-padrao-forms>
+
+    <section>
+      <div class="container-header-main-content">
+        <div class="acoes-tool-bar">
+          <form class="example-form" (submit)="$event.preventDefault()">
+            <div class="input-wrapper">
+              <input
+                type="text"
+                placeholder="nome do aluno"
+                [formControl]="searchControl"
+                aria-label="Filtro nome do aluno"
+                class="input-search"
+              />
+              <span class="icon-search" aria-hidden="true">
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="18"
+                  height="18"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  viewBox="0 0 24 24"
+                >
+                  <circle cx="11" cy="11" r="7" />
+                  <line x1="21" y1="21" x2="16.65" y2="16.65" />
+                </svg>
+              </span>
+            </div>
+          </form>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <div class="mat-elevation-z8" *ngIf="frequencias | async as frequencias">
+        <app-lista-frequencia
+          [frequencias]="frequencias.alunos"
+          (presencaChange)="atualizarPresenca($event)"
+        ></app-lista-frequencia>
+
+        <mat-paginator
+          showFirstLastButtons
+          [length]="frequencias.totalElements"
+          [pageSize]="pageSize"
+          [pageIndex]="pageIndex"
+          [pageSizeOptions]="[5, 10, 15, 20]"
+          (page)="refresh($event)"
+          aria-label="Select page"
+        >
+        </mat-paginator>
+      </div>
+    </section>
+
+    <router-outlet />
   </div>
-</section>
-
-<section>
-  <div class="mat-elevation-z8" *ngIf="frequencias | async as frequencias">
-    <app-lista-frequencia
-      [frequencias]="frequencias.alunos"
-      (presencaChange)="atualizarPresenca($event)"
-    >
-    </app-lista-frequencia>
-
-    <mat-paginator
-      showFirstLastButtons
-      [length]="frequencias.totalElements"
-      [pageSize]="pageSize"
-      [pageIndex]="pageIndex"
-      [pageSizeOptions]="[5, 10, 15, 20]"
-      (page)="refresh($event)"
-      aria-label="Select page"
-    >
-    </mat-paginator>
-  </div>
-</section>
-
-<router-outlet></router-outlet>
+</div>

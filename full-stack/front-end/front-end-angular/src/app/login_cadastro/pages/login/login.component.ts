@@ -9,6 +9,7 @@ import {
 import { LoginService } from '../../services/login.service';
 import { Router } from '@angular/router';
 import { PrimeiroInputComponent } from '../../components/primeiro-input/primeiro-input.component';
+import { MatSnackBar } from '@angular/material/snack-bar';
 
 interface LoginForm {
   email: FormControl;
@@ -24,7 +25,7 @@ interface LoginForm {
 export class LoginComponent {
   loginForm!: FormGroup<LoginForm>;
 
-  constructor(private router: Router, private loginService: LoginService) {
+  constructor(private router: Router, private loginService: LoginService, private snackBar: MatSnackBar) {
     this.loginForm = new FormGroup({
       email: new FormControl('', [Validators.required, Validators.email]),
       password: new FormControl('', [
@@ -35,21 +36,29 @@ export class LoginComponent {
   }
 
   submit() {
-    if (this.loginForm.invalid) {
-      window.alert('Preencha corretamente os campos!');
-      return;
-    }
-
-    this.loginService
-      .login(this.loginForm.value.email, this.loginForm.value.password)
-      .subscribe({
-        next: () => {
-          this.router.navigate(['alunos']);
-        },
-        error: () =>
-          window.alert('Erro inesperado! Tente novamente mais tarde'),
-      });
+  if (this.loginForm.invalid) {
+    this.snackBar.open('Preencha corretamente os campos!', 'Fechar', {
+      duration: 3000,
+      panelClass: ['snackbar-warning'],
+    });
+    return;
   }
+
+  this.loginService
+    .login(this.loginForm.value.email, this.loginForm.value.password)
+    .subscribe({
+      next: () => {
+        this.router.navigate(['alunos']);
+      },
+      error: () => {
+        this.snackBar.open('Erro inesperado! Tente novamente mais tarde', 'Fechar', {
+          duration: 3000,
+          panelClass: ['snackbar-error'],
+        });
+      },
+    });
+}
+
 
   navigate() {
     this.router.navigate(['login', 'cadastrar']);

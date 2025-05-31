@@ -1,36 +1,66 @@
-<table mat-table [dataSource]="alunos" class="mat-elevation-z8">
+<div class="table-container">
+  <div class="thead-wrapper">
+    <table
+      class="custom-table thead-table"
+      aria-label="Cabeçalho da tabela de alunos"
+    >
+      <thead>
+        <tr>
+          <th>Nome</th>
+          <th>Email</th>
+          <th>CPF</th>
+          <th>Data de Nascimento</th>
+          <th>Contato</th>
+          <th>Gênero</th>
+          <th>Ações</th>
+        </tr>
+      </thead>
+    </table>
+  </div>
 
-  <ng-container matColumnDef="nome">
-    <th mat-header-cell *matHeaderCellDef> Nome </th>
-    <td mat-cell *matCellDef="let aluno"> {{ aluno.nome }} </td>
-  </ng-container>
+  <div class="tbody-wrapper">
+    <table
+      class="custom-table tbody-table"
+      aria-label="Corpo da tabela de alunos"
+    >
+      <tbody>
+        <tr *ngFor="let aluno of alunos; let i = index">
+          <td>{{ aluno.nome}}</td>
+          <td>{{ aluno.email }}</td>
+          <td>{{ aluno.cpf | cpfPipe}}</td>
+          <td>{{ aluno.dataNascimento | date: 'dd/MM/yyyy' }}</td>
+          <td>{{ aluno.contato | contatoPipe }}</td>
+          <td>{{ aluno.genero }}</td>
+          <td>
+            <div
+              class="actions-dropdown"
+              [class.open]="openedDropdownIndex === i"
+            >
+              <button
+                class="actions-button"
+                (click)="toggleDropdown(i)"
+                aria-label="Abrir menu de ações"
+              >
+                ⋮
+              </button>
+              <ul
+                *ngIf="openedDropdownIndex === i"
+                class="actions-menu show"
+                role="menu"
+              >
+                <li role="menuitem">
+                  <button (click)="editAluno(aluno)">Editar</button>
+                </li>
+                <li role="menuitem">
+                  <button (click)="deleteAluno(aluno)">Deletar</button>
+                </li>
+              </ul>
+            </div>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
 
-  <ng-container matColumnDef="email">
-    <th mat-header-cell *matHeaderCellDef> Email </th>
-    <td mat-cell *matCellDef="let aluno"> {{ aluno.email }} </td>
-  </ng-container>
-
-  <ng-container matColumnDef="actions">
-    <th mat-header-cell *matHeaderCellDef></th>
-    <td mat-cell *matCellDef="let aluno">
-      <button mat-icon-button [matMenuTriggerFor]="menu" aria-label="Example icon-button with a menu">
-        <mat-icon>more_vert</mat-icon>
-      </button>
-      <mat-menu #menu="matMenu">
-        <button mat-menu-item (click)="editAluno(aluno)">
-          <mat-icon>edit</mat-icon>
-          <span>Editar</span>
-        </button>
-        <button mat-menu-item (click)="deleteAluno(aluno)">
-          <mat-icon>delete</mat-icon>
-          <span>Deletar</span>
-        </button>
-      </mat-menu>
-    </td>
-  </ng-container>
-
-  <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
-  <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
-
-</table>
-<router-outlet />
+<router-outlet></router-outlet>

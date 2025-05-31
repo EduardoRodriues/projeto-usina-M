@@ -62,6 +62,10 @@ public class AlunosService {
                     Alunos alunos = alunosMapper.toModel(alunosDTO);
                     record.setNome(alunos.getNome());
                     record.setEmail(alunos.getEmail());
+                    record.setCpf(alunos.getCpf());
+                    record.setContato(alunos.getContato());
+                    record.setGenero(alunos.getGenero());
+                    record.setDataNascimento(alunos.getDataNascimento());
                     return alunosMapper.toDTO(alunosRepository.save(record));
                 })
                 .orElseThrow(() -> new RecordNotFoundException(id));

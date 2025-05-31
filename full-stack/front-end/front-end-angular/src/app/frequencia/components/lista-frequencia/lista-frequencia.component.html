@@ -1,33 +1,42 @@
-<table mat-table [dataSource]="frequencias" class="mat-elevation-z8">
-  <ng-container matColumnDef="aluno">
-    <th mat-header-cell *matHeaderCellDef>Aluno</th>
-    <td mat-cell *matCellDef="let frequencia">
-      {{ frequencia.nome }}<br />
-      <small>{{ frequencia.email }}</small>
-    </td>
-  </ng-container>
+<div class="table-container">
+  <div class="thead-wrapper">
+    <table
+      class="custom-table thead-table"
+      aria-label="Cabeçalho da tabela de alunos"
+    >
+      <thead>
+        <tr>
+          <th>Nome</th>
+          <th>Presenças</th>
+          <th>Registrar</th>
+          <th>Data</th>
+        </tr>
+      </thead>
+    </table>
+  </div>
 
-  <ng-container matColumnDef="frequencia">
-    <th mat-header-cell *matHeaderCellDef>Frequência</th>
-    <td mat-cell *matCellDef="let frequencia">
-      {{ frequencia.frequencia }}
-    </td>
-  </ng-container>
+  <div class="tbody-wrapper">
+    <table class="custom-table tbody-table" aria-label="Corpo da tabela de frequências">
+      <tbody>
+        <tr *ngFor="let frequencia of frequencias; let i = index">
+          <td>
+            {{ frequencia.nome }}<br />
+            <small>{{ frequencia.email }}</small>
+          </td>
+          <td>{{ frequencia.frequencia }}</td>
+          <td>
+            <mat-checkbox
+              [checked]="frequencia.presenteHoje"
+              (change)="onTogglePresenca(frequencia)"
+            ></mat-checkbox>
+          </td>
+          <td><span style="margin-left: 8px">{{ hoje | date: 'dd/MM/yyyy' }}</span></td>
+          <td>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
 
-  <ng-container matColumnDef="actions">
-    <th mat-header-cell *matHeaderCellDef>Registrar</th>
-    <td mat-cell *matCellDef="let frequencia">
-      <mat-checkbox
-  [checked]="frequencia.presenteHoje"
-  (change)="onTogglePresenca(frequencia)"
->
-</mat-checkbox>
-<span style="margin-left: 8px;">{{ hoje }}</span>
-    </td>
-  </ng-container>
-
-  <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
-  <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
-</table>
-
-<router-outlet />
+<router-outlet></router-outlet>

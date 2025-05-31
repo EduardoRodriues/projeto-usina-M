@@ -10,5 +10,5 @@ export const alunosResolver: ResolveFn<Alunos> = (route, state) => {
   if (route.params && route.params['id']) {
     return service.buscarId(route.params['id']);
   }
-  return of({ _id: '', nome: '', email: ''});
+  return of({ _id: '', nome: '', email: '', cpf: '', dataNascimento: '', contato: '', genero: ''});
 };

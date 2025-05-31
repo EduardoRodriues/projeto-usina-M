@@ -1,44 +1,75 @@
-<app-header-padrao></app-header-padrao>
-<section>
-  <div class="container-header-main-content">
-    <div class="acoes-tool-bar">
-      <form class="example-form">
-        <mat-form-field class="example-full-width">
-          <mat-label>nome do aluno</mat-label>
-          <input type="tel" matInput placeholder="aluno(a)"
-          [formControl]="nomeFilter" />
-          <mat-icon matSuffix>search</mat-icon>
-        </mat-form-field>
-      </form>
-      <button
-        mat-flat-button
-        class="btn-success"
-        aria-label="Adicionar Aluno"
-        (click)="addAluno()"
-      >
-        Adicionar
-      </button>
-    </div>
-  </div>
-</section>
-<section>
-  <div class="mat-elevation-z8" *ngIf="alunos | async as alunos">
-    <app-alunos-lista
-      [alunos]="alunos.alunos"
-      (edit)="editAluno($event)"
-      (delete)="deleteAluno($event)"
-    ></app-alunos-lista>
+<div class="layout">
+  <app-sidebar></app-sidebar>
 
-    <mat-paginator
-      showFirstLastButtons
-      [length]="alunos.totalElements"
-      [pageSize]="pageSize"
-      [pageIndex]="pageIndex"
-      [pageSizeOptions]="[5, 10, 15, 20]"
-      (page)="refresh($event)"
-      aria-label="Select page"
-    >
-    </mat-paginator>
+  <div class="main-content">
+    <app-header-padrao
+      classe="Usuários"
+      gestao="Gestão de Usuários"
+    ></app-header-padrao>
+
+    <section>
+      <div class="container-header-main-content">
+        <div class="acoes-tool-bar">
+          <form class="example-form" (submit)="$event.preventDefault()">
+            <div class="input-wrapper">
+              <input
+                type="text"
+                placeholder="nome do aluno"
+                [formControl]="nomeFilter"
+                aria-label="Filtro nome do aluno"
+                class="input-search"
+              />
+              <span class="icon-search" aria-hidden="true">
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="18"
+                  height="18"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  viewBox="0 0 24 24"
+                >
+                  <circle cx="11" cy="11" r="7" />
+                  <line x1="21" y1="21" x2="16.65" y2="16.65" />
+                </svg>
+              </span>
+            </div>
+          </form>
+
+          <button
+            class="btn-success"
+            aria-label="Adicionar Aluno"
+            (click)="addAluno()"
+            type="button"
+          >
+            Adicionar
+          </button>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <div class="mat-elevation-z8" *ngIf="alunos | async as alunos">
+        <app-alunos-lista
+          [alunos]="alunos.alunos"
+          (edit)="editAluno($event)"
+          (delete)="deleteAluno($event)"
+        ></app-alunos-lista>
+
+        <mat-paginator
+          showFirstLastButtons
+          [length]="alunos.totalElements"
+          [pageSize]="pageSize"
+          [pageIndex]="pageIndex"
+          [pageSizeOptions]="[5, 10, 15, 20]"
+          (page)="refresh($event)"
+          aria-label="Select page"
+        ></mat-paginator>
+      </div>
+    </section>
+
+    <router-outlet />
   </div>
-</section>
-<router-outlet />
+</div>

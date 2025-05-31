@@ -32,6 +32,10 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { ListaFrequenciaComponent } from '../../components/lista-frequencia/lista-frequencia.component';
+import { HeaderPadraoComponent } from "../../../layouts/header-padrao/header-padrao.component";
+import { HeaderPadraoFormsComponent } from "../../../layouts/header-padrao-forms/header-padrao-forms.component";
+import { AlunosListaComponent } from "../../../alunos/components/alunos-lista/alunos-lista.component";
+import { SidebarComponent } from "../../../layouts/sidebar/sidebar.component";
 
 @Component({
   selector: 'app-frequencia',
@@ -46,12 +50,14 @@ import { ListaFrequenciaComponent } from '../../components/lista-frequencia/list
     MatProgressSpinnerModule,
     MatDialogModule,
     MatIconModule,
-    ListaFrequenciaComponent,
     MatPaginatorModule,
     MatButtonModule,
     MatFormFieldModule,
     MatInputModule,
-  ],
+    HeaderPadraoFormsComponent,
+    ListaFrequenciaComponent,
+    SidebarComponent
+],
   templateUrl: './frequencia.component.html',
   styleUrls: ['./frequencia.component.scss'],
 })

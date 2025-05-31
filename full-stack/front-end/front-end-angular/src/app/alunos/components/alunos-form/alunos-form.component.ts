@@ -12,10 +12,11 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { MatSelectModule } from '@angular/material/select';
 import { MatSnackBar, MatSnackBarModule } from '@angular/material/snack-bar';
-import { Location } from '@angular/common';
+import { CommonModule, Location } from '@angular/common';
 import { Alunos } from '../../containers/alunos/models/alunos';
 import { AlunosService } from '../../services/alunos.service';
 import { FormUtilsService } from '../../form/form-utils.service';
+import { HeaderPadraoFormsComponent } from "../../../layouts/header-padrao-forms/header-padrao-forms.component";
 
 @Component({
   selector: 'app-alunos-form',
@@ -28,8 +29,10 @@ import { FormUtilsService } from '../../form/form-utils.service';
     MatToolbarModule,
     MatSelectModule,
     MatSnackBarModule,
+    CommonModule,
     MatSnackBarModule,
-  ],
+    HeaderPadraoFormsComponent
+],
   templateUrl: './alunos-form.component.html',
   styleUrl: './alunos-form.component.scss',
 })
@@ -58,6 +61,27 @@ export class AlunosFormComponent {
         ],
       ],
       email: [aluno.email, [Validators.required, Validators.email]],
+      cpf: [
+        aluno.cpf,
+        [
+          Validators.required,
+          Validators.minLength(11),
+          Validators.maxLength(11),
+        ],
+      ],
+      dataNascimento: [
+        aluno.dataNascimento,
+        [Validators.required, Validators.minLength(8), Validators.maxLength(8)],
+      ],
+      contato: [
+        aluno.contato,
+        [
+          Validators.required,
+          Validators.minLength(11),
+          Validators.maxLength(11),
+        ],
+      ],
+      genero: [aluno.genero || 'Masculino', [Validators.required]],
     });
   }
 

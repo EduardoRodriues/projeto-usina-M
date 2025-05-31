@@ -1,33 +1,86 @@
-<mat-card>
-  <mat-toolbar>
-    <span>Detalhes do Aluno</span>
-  </mat-toolbar>
+<app-header-padrao-forms
+  title="Formulários"
+  gestao="Cadastro de Alunos"
+></app-header-padrao-forms>
 
-  <mat-card-content>
-    <form [formGroup]="form" class="full-widht min-widht">
-      <mat-form-field class="full-widht" class="inputs-formulario">
-        <input  matInput placeholder="Nome" formControlName="nome" #nome />
-        <mat-hint align="end">{{ nome.value.length || 0 }} / 100</mat-hint>
+<div class="form-wrapper">
+  <form [formGroup]="form" class="form-content">
+    <div class="form-row">
+      <div class="form-field">
+        <label for="nome">Nome</label>
+        <input id="nome" type="text" formControlName="nome" #nome />
+        <small>{{ nome.value.length || 0 }} / 100</small>
+        <div class="error" *ngIf="form.get('nome')?.invalid">
+          {{ formUtils.geterrorMessage(form, "nome") }}
+        </div>
+      </div>
 
-        @if (form.get('nome')?.invalid) {
-        <mat-error>{{ formUtils.geterrorMessage(form, "nome") }}</mat-error>
-        }
-      </mat-form-field>
+      <div class="form-field">
+        <label for="email">Email</label>
+        <input id="email" type="email" formControlName="email" #email />
+        <div class="error" *ngIf="form.get('email')?.invalid">
+          {{ formUtils.geterrorMessage(form, "email") }}
+        </div>
+      </div>
+    </div>
 
-      <mat-form-field class="full-widht">
-        <input matInput placeholder="email" formControlName="email" #nome />
+    <div class="form-row">
+      <div class="form-field">
+        <label for="cpf">CPF</label>
+        <input id="cpf" type="text" formControlName="cpf" #cpf />
+        <small>{{ cpf.value?.length || 0 }} / 11</small>
+        <div class="error" *ngIf="form.get('cpf')?.invalid">
+          {{ formUtils.geterrorMessage(form, "cpf") }}
+        </div>
+      </div>
 
-        @if (form.get('nome')?.invalid) {
-        <mat-error>{{ formUtils.geterrorMessage(form, "nome") }}</mat-error>
-        }
-      </mat-form-field>
-    </form>
-  </mat-card-content>
+      <div class="form-field">
+        <label for="dataNascimento">Data de Nascimento</label>
+        <input
+          id="dataNascimento"
+          type="text"
+          formControlName="dataNascimento"
+          #dataNascimento
+        />
+        <small>{{ dataNascimento.value?.length || 0 }} / 8</small>
+        <div class="error" *ngIf="form.get('dataNascimento')?.invalid">
+          {{ formUtils.geterrorMessage(form, "dataNascimento") }}
+        </div>
+      </div>
+    </div>
 
-  <mat-card-actions>
-    <button mat-raised-button (click)="onSubmit()">Salvar</button>
-    <button mat-raised-button (click)="onCancel()">Cancelar</button>
-  </mat-card-actions>
-</mat-card>
+    <div class="form-row">
+      <div class="form-field">
+        <label for="contato">Contato</label>
+        <input id="contato" type="text" formControlName="contato" #contato />
+        <small>{{ contato.value?.length || 0 }} / 11</small>
+        <div class="error" *ngIf="form.get('contato')?.invalid">
+          {{ formUtils.geterrorMessage(form, "contato") }}
+        </div>
+      </div>
+
+      <div class="form-field">
+        <label for="genero">Gênero</label>
+        <select id="genero" formControlName="genero" #genero>
+          <option value="Masculino">Masculino</option>
+          <option value="Feminino">Feminino</option>
+          <option value="Outro">Outro</option>
+        </select>
+        <div class="error" *ngIf="form.get('genero')?.invalid">
+          {{ formUtils.geterrorMessage(form, "genero") }}
+        </div>
+      </div>
+    </div>
+
+    <div class="form-actions">
+      <button type="button" class="save-btn" (click)="onSubmit()">
+        Salvar
+      </button>
+      <button type="button" class="cancel-btn" (click)="onCancel()">
+        Cancelar
+      </button>
+    </div>
+  </form>
+</div>
 
 <router-outlet />

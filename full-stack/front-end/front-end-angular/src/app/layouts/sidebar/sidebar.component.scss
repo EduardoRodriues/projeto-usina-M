@@ -1,0 +1,94 @@
+.sidebar {
+  width: 240px;
+  height: 100vh;
+  background-color: #000;
+  color: white;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: 2rem 1rem;
+  position: relative;
+}
+
+.logo-side-bar img {
+  width: 170px;
+  height: 170px;
+}
+
+.logo-side-bar  {
+  padding-left: 2rem;
+}
+
+.sidebar .profile {
+  text-align: center;
+}
+
+.sidebar .profile span {
+  font-size: 1.2rem;
+  line-height: 1.2;
+  color: white;
+}
+
+.sidebar .profile strong {
+  font-size: 1.2rem;
+}
+
+.sidebar .sidebar-section {
+  display: flex;
+  flex-direction: column;
+  margin-top: 3rem;
+  gap: 1rem;
+}
+
+.sidebar .sidebar-section small {
+  color: #999;
+  margin-left: 0.5rem;
+  margin-bottom: 0.5rem;
+  font-size: 0.7rem;
+  text-transform: uppercase;
+}
+
+.sidebar .sidebar-section a {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  color: white;
+  text-decoration: none;
+  font-size: 0.85rem;
+  padding: 0.6rem 0.9rem;
+  border-radius: 12px;
+  transition: background-color 0.3s, color 0.3s;
+  cursor: pointer;
+}
+
+.sidebar .sidebar-section a img {
+  width: 18px;
+  height: 18px;
+  transition: filter 0.3s;
+}
+
+.sidebar .sidebar-section a:hover {
+  background-color: rgba(255, 255, 255, 0.2);
+}
+
+.sidebar .sidebar-section a.active {
+  background-color: white;
+  color: black;
+  font-weight: 600;
+}
+
+.sidebar .sidebar-section a.active img {
+  filter: none;
+}
+
+.sidebar .sidebar-footer {
+  margin-top: auto;
+  text-align: center;
+}
+
+.sidebar .sidebar-footer a img {
+  width: 22px;
+  height: 22px;
+  filter: brightness(0) invert(1);
+  cursor: pointer;
+}
