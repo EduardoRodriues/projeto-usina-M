@@ -16,7 +16,7 @@ export const professores_routes: Routes = [
         (m) => m.ProfessoresFormComponent
       ),
     resolve: {
-      aluno: professoresResolver,
+      professor: professoresResolver,
     },
   },
   {
@@ -26,7 +26,7 @@ export const professores_routes: Routes = [
         (m) => m.ProfessoresFormComponent
       ),
     resolve: {
-      aluno: professoresResolver,
+      professor: professoresResolver,
     },
   },
 ];

@@ -14,7 +14,7 @@
             <div class="input-wrapper">
               <input
                 type="text"
-                placeholder="nome do aluno"
+                placeholder="nome do professor"
                 [formControl]="nomeFilter"
                 aria-label="Filtro nome do professor"
                 class="input-search"
@@ -53,7 +53,7 @@
     <section>
       <div class="mat-elevation-z8" *ngIf="professores | async as professores">
         <app-professores-lista
-          [professores]="professores.professores"
+          [professores]="professores.alunos"
           (edit)="editProfessores($event)"
           (delete)="deleteProfessores($event)"
         ></app-professores-lista>
