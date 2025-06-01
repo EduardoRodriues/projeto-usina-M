@@ -5,21 +5,21 @@ import {
   ReactiveFormsModule,
   Validators,
 } from '@angular/forms';
-import { MatCardModule } from '@angular/material/card';
-import { MatToolbarModule } from '@angular/material/toolbar';
 import { ActivatedRoute, RouterOutlet } from '@angular/router';
+import { ProfessoresServiceService } from '../../services/professores-service.service';
+import { MatSnackBar, MatSnackBarModule } from '@angular/material/snack-bar';
+import { FormUtilsService } from '../../../alunos/form/form-utils.service';
+import { Professores } from '../../containers/professores/model/professores';
+import { HeaderPadraoFormsComponent } from '../../../layouts/header-padrao-forms/header-padrao-forms.component';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
+import { MatCardModule } from '@angular/material/card';
+import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatSelectModule } from '@angular/material/select';
-import { MatSnackBar, MatSnackBarModule } from '@angular/material/snack-bar';
 import { CommonModule, Location } from '@angular/common';
-import { Alunos } from '../../containers/alunos/models/alunos';
-import { AlunosService } from '../../services/alunos.service';
-import { FormUtilsService } from '../../form/form-utils.service';
-import { HeaderPadraoFormsComponent } from "../../../layouts/header-padrao-forms/header-padrao-forms.component";
 
 @Component({
-  selector: 'app-alunos-form',
+  selector: 'app-professores-form',
   imports: [
     ReactiveFormsModule,
     RouterOutlet,
@@ -31,57 +31,52 @@ import { HeaderPadraoFormsComponent } from "../../../layouts/header-padrao-forms
     MatSnackBarModule,
     CommonModule,
     MatSnackBarModule,
-    HeaderPadraoFormsComponent
-],
-  templateUrl: './alunos-form.component.html',
-  styleUrl: './alunos-form.component.scss',
+    HeaderPadraoFormsComponent,
+  ],
+  templateUrl: './professores-form.component.html',
+  styleUrl: './professores-form.component.scss',
 })
-export class AlunosFormComponent {
+export class ProfessoresFormComponent {
   form!: FormGroup;
 
   constructor(
     private route: ActivatedRoute,
     private location: Location,
     private formBuilder: FormBuilder,
-    private service: AlunosService,
+    private service: ProfessoresServiceService,
     private sanackbar: MatSnackBar,
     public formUtils: FormUtilsService
   ) {}
 
   ngOnInit(): void {
-    const aluno: Alunos = this.route.snapshot.data['aluno'];
+    const professores: Professores = this.route.snapshot.data['professor'];
     this.form = this.formBuilder.group({
-      _id: [aluno._id],
+      _id: [professores._id],
       nome: [
-        aluno.nome,
+        professores.nome,
         [
           Validators.required,
           Validators.minLength(3),
           Validators.maxLength(100),
         ],
       ],
-      email: [aluno.email, [Validators.required, Validators.email]],
+      email: [professores.email, [Validators.required, Validators.email]],
       cpf: [
-        aluno.cpf,
+        professores.cpf,
         [
           Validators.required,
           Validators.minLength(11),
           Validators.maxLength(11),
         ],
-      ],
-      dataNascimento: [
-        aluno.dataNascimento,
-        [Validators.required, Validators.minLength(8), Validators.maxLength(8)],
       ],
       contato: [
-        aluno.contato,
+        professores.contato,
         [
           Validators.required,
           Validators.minLength(11),
           Validators.maxLength(11),
         ],
       ],
-      genero: [aluno.genero || 'Masculino', [Validators.required]],
     });
   }
 
@@ -101,11 +96,11 @@ export class AlunosFormComponent {
   }
 
   private onSuccess() {
-    this.sanackbar.open('Aluno salvo com sucesso!', '', { duration: 3000 });
+    this.sanackbar.open('Professor salvo com sucesso!', '', { duration: 3000 });
     this.onCancel();
   }
 
   private onError() {
-    this.sanackbar.open('Erro ao salvar aluno', '', { duration: 3000 });
+    this.sanackbar.open('Erro ao salvar professor', '', { duration: 3000 });
   }
 }

@@ -1,10 +1,10 @@
 <aside class="sidebar">
-  <div class="logo-side-bar">
-    <img src="img/logo-header.png" alt="Admin" />
-  </div>
 
   <div class="profile">
     <span><strong>Bem-vindo</strong> <br> {{ nomeAdmin }}</span>
+  </div>
+
+  <div class="logo-side-bar">
   </div>
 
   <div class="sidebar-section">
@@ -13,25 +13,41 @@
       <img src="img/side-bar-casa.png" alt="Home" />
       <span>Home</span>
     </a>
-    <a href="alunos/novo">
+  </div>
+
+  <div class="sidebar-section">
+    <small>Cadastro</small>
+    <input type="checkbox" id="toggle-cadastro" class="toggle-cadastro" hidden />
+    <label for="toggle-cadastro" class="dropdown-toggle">
       <img src="img/side-bar-cadastro.png" alt="Cadastro" />
       <span>Cadastro</span>
-    </a>
+    </label>
+    <div class="dropdown-menu">
+      <a href="/alunos/novo">Alunos</a>
+      <a href="/professores/novo">Professores</a>
+    </div>
+  </div>
+
+  <div class="sidebar-section">
+    <small>Gestão</small>
     <a href="/alunos">
       <img src="img/side-bar-alunos.png" alt="Alunos" />
       <span>Alunos</span>
+    </a>
+    <a href="/professores">
+      <img src="img/side-bar-professores.png" alt="Professores" />
+      <span>Professores</span>
     </a>
   </div>
 
   <div class="sidebar-section">
     <small>Relatórios</small>
     <a href="/frequencias">
-      <img src="img/side-bar-presenca.png" alt="Relatório" />
+      <img src="img/side-bar-presenca.png" alt="Presenças" />
       <span>Presenças</span>
     </a>
   </div>
 
   <div class="sidebar-footer">
-
   </div>
 </aside>

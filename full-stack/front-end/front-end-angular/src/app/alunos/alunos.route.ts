@@ -1,6 +1,5 @@
 import { Routes } from '@angular/router';
 import { alunosResolver } from './guards/alunos.resolver';
-import { frequencia_routes } from '../frequencia/frequencia.route';
 
 export const alunos_routes: Routes = [
   {

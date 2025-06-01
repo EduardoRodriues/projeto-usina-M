@@ -75,6 +75,4 @@ public class AlunosService {
         alunosRepository.delete(alunosRepository.findById(id)
                 .orElseThrow(() -> new RecordNotFoundException(id)));
     }
-
-
 }

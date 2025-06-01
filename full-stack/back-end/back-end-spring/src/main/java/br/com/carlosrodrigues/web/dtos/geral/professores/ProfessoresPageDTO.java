@@ -1,4 +1,6 @@
 package br.com.carlosrodrigues.web.dtos.geral.professores;
 
-public record ProfessoresPageDTO() {
+import java.util.List;
+
+public record ProfessoresPageDTO(List<ProfessoresDTO> alunos, long totalElements, int totalPages) {
 }

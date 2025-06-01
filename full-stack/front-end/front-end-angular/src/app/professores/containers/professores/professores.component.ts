@@ -1,35 +1,32 @@
-import { AlunosListaComponent } from '../../components/alunos-lista/alunos-lista.component';
 import { Component, ViewChild } from '@angular/core';
-import { RouterOutlet, Router } from '@angular/router';
+import { HeaderPadraoComponent } from "../../../layouts/header-padrao/header-padrao.component";
+import { SidebarComponent } from "../../../layouts/sidebar/sidebar.component";
+import { Router, RouterOutlet } from '@angular/router';
 import { MatTableModule } from '@angular/material/table';
-import { Alunos } from './models/alunos';
 import { MatCardModule } from '@angular/material/card';
 import { MatToolbarModule } from '@angular/material/toolbar';
-import { AlunosService } from '../../services/alunos.service';
-import { catchError, debounceTime, distinctUntilChanged, Observable, of, tap } from 'rxjs';
 import { CommonModule } from '@angular/common';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { MatDialog, MatDialogModule } from '@angular/material/dialog';
-import { ErrorDialogComponent } from '../../error/error-dialog/error-dialog.component';
 import { MatIconModule } from '@angular/material/icon';
-import { MatSnackBar } from '@angular/material/snack-bar';
-import { ConfirmationDialogComponent } from '../../components/confirmation-dialog/confirmation-dialog.component';
-import { AlunosPage } from './models/alunos-page';
-import {
-  MatPaginator,
-  MatPaginatorModule,
-  PageEvent,
-} from '@angular/material/paginator';
+import { AlunosListaComponent } from '../../../alunos/components/alunos-lista/alunos-lista.component';
+import { MatPaginator, MatPaginatorModule, PageEvent } from '@angular/material/paginator';
 import { MatButtonModule } from '@angular/material/button';
-import { FormControl, FormsModule } from '@angular/forms';
+import { FormControl, FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
-import { ReactiveFormsModule } from '@angular/forms';
-import { HeaderPadraoComponent } from "../../../layouts/header-padrao/header-padrao.component";
-import { SidebarComponent } from "../../../layouts/sidebar/sidebar.component";
+import { ProfessoresPage } from './model/professores-page';
+import { ProfessoresServiceService } from '../../services/professores-service.service';
+import { MatSnackBar } from '@angular/material/snack-bar';
+import { catchError, debounceTime, distinctUntilChanged, Observable, of, tap } from 'rxjs';
+import { ErrorDialogComponent } from '../../../alunos/error/error-dialog/error-dialog.component';
+import { ConfirmationDialogComponent } from '../../../alunos/components/confirmation-dialog/confirmation-dialog.component';
+import { Professores } from './model/professores';
+import { ProfessoresListaComponent } from "../../components/professores-lista/professores-lista.component";
+import { HeaderPadraoFormsComponent } from "../../../layouts/header-padrao-forms/header-padrao-forms.component";
 
 @Component({
-  selector: 'app-alunos',
+  selector: 'app-professores',
   imports: [
     RouterOutlet,
     MatTableModule,
@@ -39,7 +36,6 @@ import { SidebarComponent } from "../../../layouts/sidebar/sidebar.component";
     MatProgressSpinnerModule,
     MatDialogModule,
     MatIconModule,
-    AlunosListaComponent,
     MatPaginatorModule,
     MatButtonModule,
     FormsModule,
@@ -47,14 +43,15 @@ import { SidebarComponent } from "../../../layouts/sidebar/sidebar.component";
     MatInputModule,
     ReactiveFormsModule,
     HeaderPadraoComponent,
-    SidebarComponent
+    SidebarComponent,
+    ProfessoresListaComponent,
+    HeaderPadraoFormsComponent
 ],
-  templateUrl: './alunos.component.html',
-  styleUrl: './alunos.component.scss',
-  standalone: true,
+  templateUrl: './professores.component.html',
+  styleUrl: './professores.component.scss'
 })
-export class AlunosComponent {
-  alunos: Observable<AlunosPage> | null = null;
+export class ProfessoresComponent {
+  professores: Observable<ProfessoresPage> | null = null;
 
   @ViewChild(MatPaginator) paginator!: MatPaginator;
 
@@ -64,7 +61,7 @@ export class AlunosComponent {
   nomeFilter = new FormControl('');
 
   constructor(
-    private alunosService: AlunosService,
+    private professoresService: ProfessoresServiceService,
     private snackBar: MatSnackBar,
     private router: Router,
     public dialog: MatDialog
@@ -82,7 +79,7 @@ export class AlunosComponent {
 
   refresh(pageEvent: PageEvent = { length: 0, pageIndex: this.pageIndex, pageSize: this.pageSize }) {
     const filtroNome = this.nomeFilter.value || '';
-    this.alunos = this.alunosService
+    this.professores = this.professoresService
       .listarTodos(pageEvent.pageIndex, pageEvent.pageSize, filtroNome)
       .pipe(
         tap(() => {
@@ -90,8 +87,8 @@ export class AlunosComponent {
           this.pageSize = pageEvent.pageSize;
         }),
         catchError(() => {
-          this.onError('Erro ao carregar alunos');
-          return of({ alunos: [], totalElements: 0, totalPages: 0 });
+          this.onError('Erro ao carregar professores');
+          return of({ professores: [], totalElements: 0, totalPages: 0 });
         })
       );
   }
@@ -102,31 +99,31 @@ export class AlunosComponent {
     });
   }
 
-  addAluno() {
-    this.router.navigate(['/alunos/novo']);
+  addProfessores() {
+    this.router.navigate(['/professores/novo']);
   }
 
-  editAluno(aluno: Alunos) {
-    this.router.navigate(['/alunos/editar', aluno._id]);
+  editProfessores(professores: Professores) {
+    this.router.navigate(['/professores/editar', professores._id]);
   }
 
-  deleteAluno(aluno: Alunos) {
+  deleteProfessores(professores: Professores) {
     const dialogRef = this.dialog.open(ConfirmationDialogComponent, {
       data: 'Tem certeza que deseja remover esse curso?',
     });
 
     dialogRef.afterClosed().subscribe((result) => {
       if (result) {
-        this.alunosService.remove(aluno._id).subscribe(
+        this.professoresService.remove(professores._id).subscribe(
           () => {
             this.refresh();
-            this.snackBar.open('Aluno removido com sucesso!', 'x', {
+            this.snackBar.open('Professor removido com sucesso!', 'x', {
               duration: 3000,
               verticalPosition: 'top',
               horizontalPosition: 'center',
             });
           },
-          () => this.onError('Erro ao remover aluno!')
+          () => this.onError('Erro ao remover professor!')
         );
       }
     });

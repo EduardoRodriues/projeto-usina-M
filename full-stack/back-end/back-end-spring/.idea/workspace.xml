@@ -5,38 +5,22 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="5fce086a-1776-466b-ba8f-251c1e645d2b" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/.idea/jpa.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/br/com/carlosrodrigues/core/models/geral/professores/Professores.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/br/com/carlosrodrigues/core/repositories/geral/professores/IProfessoresRepository.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/br/com/carlosrodrigues/web/controllers/geral/professores/ProfessoresController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/br/com/carlosrodrigues/web/dtos/geral/professores/ProfessoresDTO.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/br/com/carlosrodrigues/web/dtos/geral/professores/ProfessoresPageDTO.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/br/com/carlosrodrigues/web/mappers/geral/professores/IProfessoresMapper.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/br/com/carlosrodrigues/web/services/geral/professores/ProfessoresServices.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/br/com/carlosrodrigues/core/models/geral/alunos/Alunos.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/br/com/carlosrodrigues/core/models/geral/alunos/Alunos.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/br/com/carlosrodrigues/web/dtos/geral/alunos/AlunosDTO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/br/com/carlosrodrigues/web/dtos/geral/alunos/AlunosDTO.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/br/com/carlosrodrigues/web/services/geral/alunos/AlunosService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/br/com/carlosrodrigues/web/services/geral/alunos/AlunosService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../front-end/front-end-angular/angular.json" beforeDir="false" afterPath="$PROJECT_DIR$/../../front-end/front-end-angular/angular.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../front-end/front-end-angular/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/../../front-end/front-end-angular/package-lock.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../front-end/front-end-angular/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/../../front-end/front-end-angular/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../front-end/front-end-angular/src/app/alunos/components/alunos-form/alunos-form.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/../../front-end/front-end-angular/src/app/alunos/components/alunos-form/alunos-form.component.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../front-end/front-end-angular/src/app/alunos/components/alunos-form/alunos-form.component.scss" beforeDir="false" afterPath="$PROJECT_DIR$/../../front-end/front-end-angular/src/app/alunos/components/alunos-form/alunos-form.component.scss" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/config/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/config/application.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../front-end/front-end-angular/src/app/alunos/alunos.route.ts" beforeDir="false" afterPath="$PROJECT_DIR$/../../front-end/front-end-angular/src/app/alunos/alunos.route.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../../front-end/front-end-angular/src/app/alunos/components/alunos-form/alunos-form.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/../../front-end/front-end-angular/src/app/alunos/components/alunos-form/alunos-form.component.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../front-end/front-end-angular/src/app/alunos/components/alunos-lista/alunos-lista.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/../../front-end/front-end-angular/src/app/alunos/components/alunos-lista/alunos-lista.component.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../front-end/front-end-angular/src/app/alunos/components/alunos-lista/alunos-lista.component.scss" beforeDir="false" afterPath="$PROJECT_DIR$/../../front-end/front-end-angular/src/app/alunos/components/alunos-lista/alunos-lista.component.scss" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../front-end/front-end-angular/src/app/alunos/components/alunos-lista/alunos-lista.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/../../front-end/front-end-angular/src/app/alunos/components/alunos-lista/alunos-lista.component.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../front-end/front-end-angular/src/app/alunos/components/confirmation-dialog/confirmation-dialog.component.scss" beforeDir="false" afterPath="$PROJECT_DIR$/../../front-end/front-end-angular/src/app/alunos/components/confirmation-dialog/confirmation-dialog.component.scss" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../../front-end/front-end-angular/src/app/alunos/containers/alunos/alunos.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/../../front-end/front-end-angular/src/app/alunos/containers/alunos/alunos.component.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../front-end/front-end-angular/src/app/alunos/containers/alunos/alunos.component.scss" beforeDir="false" afterPath="$PROJECT_DIR$/../../front-end/front-end-angular/src/app/alunos/containers/alunos/alunos.component.scss" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../../front-end/front-end-angular/src/app/alunos/containers/alunos/alunos.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/../../front-end/front-end-angular/src/app/alunos/containers/alunos/alunos.component.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../front-end/front-end-angular/src/app/alunos/containers/alunos/models/alunos.ts" beforeDir="false" afterPath="$PROJECT_DIR$/../../front-end/front-end-angular/src/app/alunos/containers/alunos/models/alunos.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../front-end/front-end-angular/src/app/alunos/error/error-dialog/error-dialog.component.scss" beforeDir="false" afterPath="$PROJECT_DIR$/../../front-end/front-end-angular/src/app/alunos/error/error-dialog/error-dialog.component.scss" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../front-end/front-end-angular/src/app/alunos/form/form-utils.service.ts" beforeDir="false" afterPath="$PROJECT_DIR$/../../front-end/front-end-angular/src/app/alunos/form/form-utils.service.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../front-end/front-end-angular/src/app/alunos/guards/alunos.resolver.ts" beforeDir="false" afterPath="$PROJECT_DIR$/../../front-end/front-end-angular/src/app/alunos/guards/alunos.resolver.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../front-end/front-end-angular/src/app/app.variaveis.scss" beforeDir="false" afterPath="$PROJECT_DIR$/../../front-end/front-end-angular/src/app/app.variaveis.scss" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../front-end/front-end-angular/src/app/frequencia/components/lista-frequencia/lista-frequencia.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/../../front-end/front-end-angular/src/app/frequencia/components/lista-frequencia/lista-frequencia.component.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../front-end/front-end-angular/src/app/frequencia/components/lista-frequencia/lista-frequencia.component.scss" beforeDir="false" afterPath="$PROJECT_DIR$/../../front-end/front-end-angular/src/app/frequencia/components/lista-frequencia/lista-frequencia.component.scss" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../front-end/front-end-angular/src/app/frequencia/components/lista-frequencia/lista-frequencia.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/../../front-end/front-end-angular/src/app/frequencia/components/lista-frequencia/lista-frequencia.component.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../front-end/front-end-angular/src/app/frequencia/containers/frequencia/frequencia.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/../../front-end/front-end-angular/src/app/frequencia/containers/frequencia/frequencia.component.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../front-end/front-end-angular/src/app/frequencia/containers/frequencia/frequencia.component.scss" beforeDir="false" afterPath="$PROJECT_DIR$/../../front-end/front-end-angular/src/app/frequencia/containers/frequencia/frequencia.component.scss" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../front-end/front-end-angular/src/app/frequencia/containers/frequencia/frequencia.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/../../front-end/front-end-angular/src/app/frequencia/containers/frequencia/frequencia.component.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../front-end/front-end-angular/src/app/layouts/header-padrao/header-padrao.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/../../front-end/front-end-angular/src/app/layouts/header-padrao/header-padrao.component.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../front-end/front-end-angular/src/app/layouts/header-padrao/header-padrao.component.scss" beforeDir="false" afterPath="$PROJECT_DIR$/../../front-end/front-end-angular/src/app/layouts/header-padrao/header-padrao.component.scss" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../front-end/front-end-angular/src/app/layouts/header-padrao/header-padrao.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/../../front-end/front-end-angular/src/app/layouts/header-padrao/header-padrao.component.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../front-end/front-end-angular/src/styles.scss" beforeDir="false" afterPath="$PROJECT_DIR$/../../front-end/front-end-angular/src/styles.scss" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../front-end/front-end-angular/src/app/app.routes.ts" beforeDir="false" afterPath="$PROJECT_DIR$/../../front-end/front-end-angular/src/app/app.routes.ts" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -46,8 +30,9 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
-        <option value="Interface" />
         <option value="Record" />
+        <option value="Interface" />
+        <option value="com.intellij.jpb.JpaRepository" />
         <option value="Class" />
       </list>
     </option>
@@ -74,6 +59,7 @@
     &quot;RequestMappingsPanelWidth1&quot;: &quot;75&quot;,
     &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
     &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
+    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
     &quot;Spring Boot.Main.executor&quot;: &quot;Run&quot;,
     &quot;git-widget-placeholder&quot;: &quot;main&quot;,
     &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
@@ -133,6 +119,8 @@
       <workItem from="1748604776379" duration="4744000" />
       <workItem from="1748623790118" duration="2692000" />
       <workItem from="1748648122560" duration="2864000" />
+      <workItem from="1748698725929" duration="3755000" />
+      <workItem from="1748744073962" duration="3655000" />
     </task>
     <servers />
   </component>

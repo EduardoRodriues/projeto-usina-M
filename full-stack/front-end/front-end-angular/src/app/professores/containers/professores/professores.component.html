@@ -4,7 +4,7 @@
   <div class="main-content">
     <app-header-padrao
       classe="Usuários"
-      gestao="Gestão de Alunos"
+      gestao="Gestão de Professores"
     ></app-header-padrao>
 
     <section>
@@ -16,7 +16,7 @@
                 type="text"
                 placeholder="nome do aluno"
                 [formControl]="nomeFilter"
-                aria-label="Filtro nome do aluno"
+                aria-label="Filtro nome do professor"
                 class="input-search"
               />
               <span class="icon-search" aria-hidden="true">
@@ -40,8 +40,8 @@
 
           <button
             class="btn-success"
-            aria-label="Adicionar Aluno"
-            (click)="addAluno()"
+            aria-label="Adicionar Professor"
+            (click)="addProfessores()"
             type="button"
           >
             Adicionar
@@ -51,16 +51,16 @@
     </section>
 
     <section>
-      <div class="mat-elevation-z8" *ngIf="alunos | async as alunos">
-        <app-alunos-lista
-          [alunos]="alunos.alunos"
-          (edit)="editAluno($event)"
-          (delete)="deleteAluno($event)"
-        ></app-alunos-lista>
+      <div class="mat-elevation-z8" *ngIf="professores | async as professores">
+        <app-professores-lista
+          [professores]="professores.professores"
+          (edit)="editProfessores($event)"
+          (delete)="deleteProfessores($event)"
+        ></app-professores-lista>
 
         <mat-paginator
           showFirstLastButtons
-          [length]="alunos.totalElements"
+          [length]="professores.totalElements"
           [pageSize]="pageSize"
           [pageIndex]="pageIndex"
           [pageSizeOptions]="[5, 10, 15, 20]"

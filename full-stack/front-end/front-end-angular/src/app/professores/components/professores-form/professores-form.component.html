@@ -1,0 +1,60 @@
+<app-header-padrao-forms
+  title="Formulários"
+  gestao="Cadastro de Professores"
+></app-header-padrao-forms>
+
+<div class="form-wrapper" *ngIf="form">
+  <form [formGroup]="form" class="form-content">
+    <div class="form-row">
+      <div class="form-field">
+        <label for="nome">Nome</label>
+        <input id="nome" type="text" formControlName="nome" #nome />
+        <small>{{ nome.value.length || 0 }} / 100</small>
+        <div class="error" *ngIf="form?.get('nome')?.invalid">
+          {{ formUtils.geterrorMessage(form, 'nome') }}
+        </div>
+      </div>
+
+      <div class="form-field">
+        <label for="email">Email</label>
+        <input id="email" type="email" formControlName="email" #email />
+        <div class="error" *ngIf="form?.get('email')?.invalid">
+          {{ formUtils.geterrorMessage(form, 'email') }}
+        </div>
+      </div>
+    </div>
+
+    <div class="form-row">
+      <div class="form-field">
+        <label for="cpf">CPF</label>
+        <input id="cpf" type="text" formControlName="cpf" #cpf />
+        <small>{{ cpf.value?.length || 0 }} / 11</small>
+        <div class="error" *ngIf="form?.get('cpf')?.invalid">
+          {{ formUtils.geterrorMessage(form, 'cpf') }}
+        </div>
+      </div>
+    </div>
+
+    <div class="form-row">
+      <div class="form-field">
+        <label for="contato">Contato</label>
+        <input id="contato" type="text" formControlName="contato" #contato />
+        <small>{{ contato.value?.length || 0 }} / 11</small>
+        <div class="error" *ngIf="form?.get('contato')?.invalid">
+          {{ formUtils.geterrorMessage(form, 'contato') }}
+        </div>
+      </div>
+    </div>
+
+    <div class="form-actions">
+      <button type="button" class="save-btn" (click)="onSubmit()">
+        Salvar
+      </button>
+      <button type="button" class="cancel-btn" (click)="onCancel()">
+        Cancelar
+      </button>
+    </div>
+  </form>
+</div>
+
+<router-outlet></router-outlet>

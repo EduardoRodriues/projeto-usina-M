@@ -1,0 +1,62 @@
+<div class="table-container">
+  <div class="thead-wrapper">
+    <table
+      class="custom-table thead-table"
+      aria-label="Cabeçalho da tabela de alunos"
+    >
+      <thead>
+        <tr>
+          <th>Nome</th>
+          <th>Email</th>
+          <th>CPF</th>
+          <th>Contato</th>
+          <th>Ações</th>
+        </tr>
+      </thead>
+    </table>
+  </div>
+
+  <div class="tbody-wrapper">
+    <table
+      class="custom-table tbody-table"
+      aria-label="Corpo da tabela de alunos"
+    >
+      <tbody>
+        <tr *ngFor="let professor of professores; let i = index">
+          <td>{{ professor.nome}}</td>
+          <td>{{ professor.email }}</td>
+          <td>{{ professor.cpf | cpfPipe}}</td>
+          <td>{{ professor.contato | contatoPipe }}</td>
+          <td>
+            <div
+              class="actions-dropdown"
+              [class.open]="openedDropdownIndex === i"
+            >
+              <button
+                class="actions-button"
+                (click)="toggleDropdown(i)"
+                aria-label="Abrir menu de ações"
+              >
+                ⋮
+              </button>
+              <ul
+                *ngIf="openedDropdownIndex === i"
+                class="actions-menu show"
+                role="menu"
+              >
+                <li role="menuitem">
+                  <button (click)="editProfessor(professor)">Editar</button>
+                </li>
+                <li role="menuitem">
+                  <button (click)="deleteProfessor(professor)">Deletar</button>
+                </li>
+              </ul>
+            </div>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+
+<router-outlet></router-outlet>
